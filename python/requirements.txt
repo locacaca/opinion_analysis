@@ -1,0 +1,9 @@
+aiohttp==3.11.18
+fastapi>=0.110,<1.0
+praw==7.8.1
+psycopg[binary]>=3.1,<4.0
+pytube>=15.0,<16.0
+requests>=2.31,<3.0
+sqlalchemy>=2.0,<3.0
+uvicorn>=0.30,<1.0
+youtube-transcript-api==1.1.0
