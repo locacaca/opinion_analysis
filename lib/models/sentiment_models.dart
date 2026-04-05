@@ -4,6 +4,17 @@ enum SourcePlatform {
   x,
 }
 
+enum SourceWeightTier {
+  low,
+  medium,
+  high,
+}
+
+enum YouTubeCollectionMode {
+  officialApi,
+  headlessBrowser,
+}
+
 extension SourcePlatformValue on SourcePlatform {
   String get value => switch (this) {
         SourcePlatform.reddit => 'reddit',
@@ -18,6 +29,27 @@ extension SourcePlatformValue on SourcePlatform {
       };
 }
 
+extension SourceWeightTierValue on SourceWeightTier {
+  String get value => switch (this) {
+        SourceWeightTier.low => 'low',
+        SourceWeightTier.medium => 'medium',
+        SourceWeightTier.high => 'high',
+      };
+
+  int get weight => switch (this) {
+        SourceWeightTier.low => 1,
+        SourceWeightTier.medium => 2,
+        SourceWeightTier.high => 3,
+      };
+}
+
+extension YouTubeCollectionModeValue on YouTubeCollectionMode {
+  String get value => switch (this) {
+        YouTubeCollectionMode.officialApi => 'official_api',
+        YouTubeCollectionMode.headlessBrowser => 'headless_browser',
+      };
+}
+
 class DashboardResponse {
   const DashboardResponse({
     required this.keyword,
@@ -29,6 +61,11 @@ class DashboardResponse {
     required this.retainedCommentCount,
     required this.discardedCommentCount,
     required this.sourceBreakdown,
+    this.sourceLimits = const {},
+    this.rawCountBySource = const {},
+    this.retainedCountBySource = const {},
+    this.discardedCountBySource = const {},
+    this.monitorStages = const [],
   });
 
   final String keyword;
@@ -40,6 +77,11 @@ class DashboardResponse {
   final int retainedCommentCount;
   final int discardedCommentCount;
   final Map<String, int> sourceBreakdown;
+  final Map<String, int> sourceLimits;
+  final Map<String, int> rawCountBySource;
+  final Map<String, int> retainedCountBySource;
+  final Map<String, int> discardedCountBySource;
+  final List<MonitorStage> monitorStages;
 
   factory DashboardResponse.fromJson(Map<String, dynamic> json) {
     final rawPoints =
@@ -52,6 +94,25 @@ class DashboardResponse {
             json['sourceBreakdown'] ??
             <String, dynamic>{})
         as Map<String, dynamic>;
+    final rawSourceLimits = (json['source_limits'] ??
+            json['sourceLimits'] ??
+            <String, dynamic>{})
+        as Map<String, dynamic>;
+    final rawRawCountBySource = (json['raw_count_by_source'] ??
+            json['rawCountBySource'] ??
+            <String, dynamic>{})
+        as Map<String, dynamic>;
+    final rawRetainedCountBySource = (json['retained_count_by_source'] ??
+            json['retainedCountBySource'] ??
+            <String, dynamic>{})
+        as Map<String, dynamic>;
+    final rawDiscardedCountBySource = (json['discarded_count_by_source'] ??
+            json['discardedCountBySource'] ??
+            <String, dynamic>{})
+        as Map<String, dynamic>;
+    final rawMonitor = (json['monitor'] ?? const <String, dynamic>{})
+        as Map<String, dynamic>;
+    final rawStages = (rawMonitor['stages'] ?? const <dynamic>[]) as List<dynamic>;
 
     return DashboardResponse(
       keyword: (json['keyword'] as String? ?? 'DeepSeek').trim(),
@@ -76,6 +137,22 @@ class DashboardResponse {
       sourceBreakdown: rawBreakdown.map(
         (key, value) => MapEntry(key, _toInt(value)),
       ),
+      sourceLimits: rawSourceLimits.map(
+        (key, value) => MapEntry(key, _toInt(value)),
+      ),
+      rawCountBySource: rawRawCountBySource.map(
+        (key, value) => MapEntry(key, _toInt(value)),
+      ),
+      retainedCountBySource: rawRetainedCountBySource.map(
+        (key, value) => MapEntry(key, _toInt(value)),
+      ),
+      discardedCountBySource: rawDiscardedCountBySource.map(
+        (key, value) => MapEntry(key, _toInt(value)),
+      ),
+      monitorStages: rawStages
+          .whereType<Map<String, dynamic>>()
+          .map(MonitorStage.fromJson)
+          .toList(),
     );
   }
 
@@ -89,6 +166,11 @@ class DashboardResponse {
     int? retainedCommentCount,
     int? discardedCommentCount,
     Map<String, int>? sourceBreakdown,
+    Map<String, int>? sourceLimits,
+    Map<String, int>? rawCountBySource,
+    Map<String, int>? retainedCountBySource,
+    Map<String, int>? discardedCountBySource,
+    List<MonitorStage>? monitorStages,
   }) {
     return DashboardResponse(
       keyword: keyword ?? this.keyword,
@@ -100,6 +182,13 @@ class DashboardResponse {
       retainedCommentCount: retainedCommentCount ?? this.retainedCommentCount,
       discardedCommentCount: discardedCommentCount ?? this.discardedCommentCount,
       sourceBreakdown: sourceBreakdown ?? this.sourceBreakdown,
+      sourceLimits: sourceLimits ?? this.sourceLimits,
+      rawCountBySource: rawCountBySource ?? this.rawCountBySource,
+      retainedCountBySource:
+          retainedCountBySource ?? this.retainedCountBySource,
+      discardedCountBySource:
+          discardedCountBySource ?? this.discardedCountBySource,
+      monitorStages: monitorStages ?? this.monitorStages,
     );
   }
 
@@ -115,6 +204,33 @@ class DashboardResponse {
       String value => int.tryParse(value) ?? fallback,
       _ => fallback,
     };
+  }
+}
+
+class MonitorStage {
+  const MonitorStage({
+    required this.stage,
+    required this.timestamp,
+    required this.details,
+  });
+
+  final String stage;
+  final String timestamp;
+  final Map<String, dynamic> details;
+
+  factory MonitorStage.fromJson(Map<String, dynamic> json) {
+    return MonitorStage(
+      stage: (json['stage'] as String? ?? '').trim(),
+      timestamp: (json['timestamp'] as String? ?? '').trim(),
+      details: ((json['details'] ?? const <String, dynamic>{})
+              as Map<Object?, Object?>)
+          .map(
+        (key, value) => MapEntry(
+          key?.toString() ?? '',
+          value,
+        ),
+      ),
+    );
   }
 }
 
@@ -134,6 +250,18 @@ class ControversyPoint {
       title: (json['title'] as String? ?? 'Untitled').trim(),
       summary: (json['summary'] as String? ?? '').trim(),
       link: (json['link'] ?? json['url'] ?? json['original_link']) as String?,
+    );
+  }
+
+  ControversyPoint copyWith({
+    String? title,
+    String? summary,
+    String? link,
+  }) {
+    return ControversyPoint(
+      title: title ?? this.title,
+      summary: summary ?? this.summary,
+      link: link ?? this.link,
     );
   }
 }

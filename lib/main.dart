@@ -39,7 +39,7 @@ class TrendPulseApp extends StatelessWidget {
         ChangeNotifierProvider<SentimentProvider>(
           create: (_) => SentimentProvider(
             apiService: SentimentApiService(),
-          )..fetchDashboard(),
+          ),
         ),
       ],
       child: MaterialApp(

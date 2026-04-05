@@ -10,7 +10,6 @@ class ControversyPoint(TypedDict):
 
     title: str
     summary: str
-    link: str
 
 
 class AnalysisChunkResult(TypedDict):
@@ -31,6 +30,7 @@ class RecordAnalysisResult(TypedDict):
     title: str
     original_link: str
     sentiment_score: int
+    relevance_score: int
     sentiment_label: str
     reasoning: str
 

@@ -67,9 +67,10 @@ class CleanedRecordModel(Base):
     video_url: Mapped[str | None] = mapped_column(Text, nullable=True)
     has_transcript: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     title: Mapped[str | None] = mapped_column(Text, nullable=True)
-    description: Mapped[str | None] = mapped_column(Text, nullable=True)
     description_text: Mapped[str | None] = mapped_column(Text, nullable=True)
     transcript_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    comments_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    fetch_error: Mapped[str | None] = mapped_column(Text, nullable=True)
     metadata_json: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
@@ -139,6 +140,23 @@ class OpinionStorage:
             )
         return len(records)
 
+    def save_cleaned_record(
+        self,
+        *,
+        run_id: int,
+        record: CleanedOpinionRecord,
+    ) -> None:
+        """Persist one cleaned source record immediately."""
+        now = _utcnow()
+        with self._session() as session:
+            session.add(
+                _build_cleaned_record_model(
+                    run_id=run_id,
+                    record=record,
+                    created_at=now,
+                )
+            )
+
     def load_run_records(self, run_id: int) -> list[StoredOpinionRecord]:
         """Load cleaned source records for a collection run."""
         with self._session() as session:
@@ -175,12 +193,17 @@ class OpinionStorage:
                 "ALTER TABLE cleaned_records ADD COLUMN has_transcript BOOLEAN"
             ),
             "title": "ALTER TABLE cleaned_records ADD COLUMN title TEXT",
-            "description": "ALTER TABLE cleaned_records ADD COLUMN description TEXT",
             "description_text": (
                 "ALTER TABLE cleaned_records ADD COLUMN description_text TEXT"
             ),
             "transcript_text": (
                 "ALTER TABLE cleaned_records ADD COLUMN transcript_text TEXT"
+            ),
+            "comments_text": (
+                "ALTER TABLE cleaned_records ADD COLUMN comments_text TEXT"
+            ),
+            "fetch_error": (
+                "ALTER TABLE cleaned_records ADD COLUMN fetch_error TEXT"
             ),
         }
 
@@ -285,9 +308,11 @@ def _build_cleaned_record_model(
     has_transcript = _pop_bool(metadata, "has_transcript")
     title = _pop_text(metadata, "title")
     metadata.pop("title_text", None)
-    description = _pop_text(metadata, "description")
-    description_text = _pop_text(metadata, "description_text") or description
+    metadata.pop("description", None)
+    description_text = _pop_text(metadata, "description_text")
     transcript_text = _pop_text(metadata, "transcript_text")
+    comments_text = _pop_text(metadata, "comments_text")
+    fetch_error = _pop_text(metadata, "fetch_error")
 
     return CleanedRecordModel(
         run_id=run_id,
@@ -301,9 +326,10 @@ def _build_cleaned_record_model(
         video_url=video_url,
         has_transcript=has_transcript,
         title=title,
-        description=description or description_text,
         description_text=description_text,
         transcript_text=transcript_text,
+        comments_text=comments_text,
+        fetch_error=fetch_error,
         metadata_json=metadata or None,
         created_at=created_at,
     )
@@ -318,9 +344,10 @@ def _build_stored_metadata(row: CleanedRecordModel) -> dict[str, Any]:
     if row.has_transcript is not None:
         metadata["has_transcript"] = bool(row.has_transcript)
     _set_if_present(metadata, "title", row.title)
-    _set_if_present(metadata, "description", row.description)
     _set_if_present(metadata, "description_text", row.description_text)
     _set_if_present(metadata, "transcript_text", row.transcript_text)
+    _set_if_present(metadata, "comments_text", row.comments_text)
+    _set_if_present(metadata, "fetch_error", row.fetch_error)
     return metadata
 
 

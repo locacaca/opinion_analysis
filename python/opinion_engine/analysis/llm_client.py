@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 import os
 from dataclasses import dataclass
@@ -19,13 +20,13 @@ class LLMClientConfig:
     api_key: str
     base_url: str
     model: str
-    timeout_seconds: int = 60
+    timeout_seconds: int = 570
 
     @classmethod
     def from_env(cls) -> "LLMClientConfig":
         """Build a client config from environment variables."""
         load_env_file()
-        timeout_raw = os.getenv("LLM_TIMEOUT_SECONDS", "60")
+        timeout_raw = os.getenv("LLM_TIMEOUT_SECONDS", "570")
         api_key = os.getenv("LLM_API_KEY") or get_required_env("API_KEY")
         base_url = (
             os.getenv("LLM_API_BASE_URL")
@@ -64,19 +65,30 @@ class OpenAICompatibleLLMClient:
                 {"role": "user", "content": user_prompt},
             ],
         }
-        timeout = aiohttp.ClientTimeout(total=self._config.timeout_seconds)
+        timeout = aiohttp.ClientTimeout(
+            total=self._config.timeout_seconds,
+            connect=20,
+            sock_connect=20,
+            sock_read=self._config.timeout_seconds,
+        )
         headers = {
             "Authorization": f"Bearer {self._config.api_key}",
             "Content-Type": "application/json",
         }
-        async with aiohttp.ClientSession(timeout=timeout) as session:
-            async with session.post(
-                f"{self._config.base_url}/chat/completions",
-                headers=headers,
-                json=payload,
-            ) as response:
-                body = await response.text()
-                response.raise_for_status()
+        try:
+            async with aiohttp.ClientSession(timeout=timeout) as session:
+                async with session.post(
+                    f"{self._config.base_url}/chat/completions",
+                    headers=headers,
+                    json=payload,
+                ) as response:
+                    body = await response.text()
+                    response.raise_for_status()
+        except asyncio.TimeoutError as exc:
+            raise RuntimeError(
+                "LLM request timed out after "
+                f"{self._config.timeout_seconds} seconds while waiting for the provider."
+            ) from exc
         return self._extract_json(body)
 
     def _extract_json(self, raw_response: str) -> dict[str, Any]:

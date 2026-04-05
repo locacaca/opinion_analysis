@@ -35,6 +35,50 @@ class AppStrings {
         : 'Only crawl content from checked sources';
   }
 
+  static String totalFetchLimit(AppLanguage language) {
+    return language == AppLanguage.chinese ? '总抓取条数' : 'Total Fetch Limit';
+  }
+
+  static String totalFetchLimitHint(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '总量上限 50，按平台权重分配'
+        : 'Up to 50 total items. Selected sources share this total by weight.';
+  }
+
+  static String sourceWeight(AppLanguage language) {
+    return language == AppLanguage.chinese ? '平台权重' : 'Source Weight';
+  }
+
+  static String youtubeMode(AppLanguage language) {
+    return language == AppLanguage.chinese ? 'YouTube 抓取方式' : 'YouTube Mode';
+  }
+
+  static String youtubeModeHint(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '官方 API 更快，浏览器增强模式更适合补字幕。'
+        : 'Official API is faster. Browser mode is better when subtitle coverage matters.';
+  }
+
+  static String youtubeModeOfficial(AppLanguage language) {
+    return language == AppLanguage.chinese ? '官方 API' : 'Official API';
+  }
+
+  static String youtubeModeBrowser(AppLanguage language) {
+    return language == AppLanguage.chinese ? '浏览器增强' : 'Browser Enhanced';
+  }
+
+  static String weightLow(AppLanguage language) {
+    return language == AppLanguage.chinese ? '低' : 'Low';
+  }
+
+  static String weightMedium(AppLanguage language) {
+    return language == AppLanguage.chinese ? '中' : 'Medium';
+  }
+
+  static String weightHigh(AppLanguage language) {
+    return language == AppLanguage.chinese ? '高' : 'High';
+  }
+
   static String searchHint(AppLanguage language) {
     return language == AppLanguage.chinese
         ? '输入关键词，例如 DeepSeek'
@@ -91,6 +135,70 @@ class AppStrings {
 
   static String languageToggle(AppLanguage language) {
     return language == AppLanguage.chinese ? 'EN' : '中文';
+  }
+
+  static String interfaceLanguage(AppLanguage language) {
+    return language == AppLanguage.chinese ? '界面语言' : 'Interface Language';
+  }
+
+  static String outputLanguage(AppLanguage language) {
+    return language == AppLanguage.chinese ? '输出语言' : 'Output Language';
+  }
+
+  static String outputLanguageHint(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '该选项会直接告诉大模型使用哪种语言输出摘要与争议点。'
+        : 'This tells the model which language to use for the summary and discussion points.';
+  }
+
+  static String monitoring(AppLanguage language) {
+    return language == AppLanguage.chinese ? '监控' : 'Monitoring';
+  }
+
+  static String monitoringHint(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '开启后会按设定间隔自动重新运行一次完整流程。'
+        : 'When enabled, TrendPulse reruns the full workflow at the selected interval.';
+  }
+
+  static String monitoringInterval(AppLanguage language) {
+    return language == AppLanguage.chinese ? '监控间隔' : 'Monitoring Interval';
+  }
+
+  static String monitoringStart(AppLanguage language) {
+    return language == AppLanguage.chinese ? '开启监控' : 'Start Monitoring';
+  }
+
+  static String monitoringStop(AppLanguage language) {
+    return language == AppLanguage.chinese ? '关闭监控' : 'Stop Monitoring';
+  }
+
+  static String monitoringLocked(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '监控开启后，关键词、平台、平台权重、抓取数量、输出语言和监控间隔都会被锁定。'
+        : 'All analysis settings are locked while monitoring is enabled.';
+  }
+
+  static String sourceUnavailable(AppLanguage language) {
+    return language == AppLanguage.chinese ? '暂未开放' : 'Not Available Yet';
+  }
+
+  static String monitoringAlertTitle(AppLanguage language) {
+    return language == AppLanguage.chinese ? '舆情预警' : 'Opinion Alert';
+  }
+
+  static String monitoringAlertBody(AppLanguage language, String keyword, int score) {
+    return language == AppLanguage.chinese
+        ? '关键词“$keyword”的舆情分数已降至 $score，低于预警阈值 30。'
+        : 'The sentiment score for "$keyword" has dropped to $score, below the alert threshold of 30.';
+  }
+
+  static String languageEnglish(AppLanguage language) {
+    return language == AppLanguage.chinese ? '英文' : 'English';
+  }
+
+  static String languageChinese(AppLanguage language) {
+    return language == AppLanguage.chinese ? '中文' : 'Chinese';
   }
 
   static String retainedCount(AppLanguage language, int count) {
@@ -154,5 +262,41 @@ class AppStrings {
 
   static String noControversies(AppLanguage language) {
     return language == AppLanguage.chinese ? '暂无争议点' : 'No controversy points available';
+  }
+
+  static String inputPromptTitle(AppLanguage language) {
+    return language == AppLanguage.chinese ? '输入关键词开始分析' : 'Enter a keyword to start analysis';
+  }
+
+  static String inputPromptBody(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '当前不会自动请求数据。请输入关键词并点击“分析”，系统才会开始抓取、入库和分析流程。'
+        : 'No request is sent automatically. Enter a keyword and tap Analyze to start collection, storage, and analysis.';
+  }
+
+  static String loadingBody(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '正在抓取数据、写入数据库并调用模型分析，请稍候。'
+        : 'Collecting data, storing records, and running model analysis. Please wait.';
+  }
+
+  static String liveProgress(AppLanguage language) {
+    return language == AppLanguage.chinese ? '当前进度' : 'Live Progress';
+  }
+
+  static String liveProgressHint(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '进度会根据后端真实阶段更新：启动、送入大模型、返回结果。'
+        : 'This progress follows the real backend stages: start, send to model, and return result.';
+  }
+
+  static String backendTimeline(AppLanguage language) {
+    return language == AppLanguage.chinese ? '后端执行时间线' : 'Backend Timeline';
+  }
+
+  static String backendTimelineHint(AppLanguage language) {
+    return language == AppLanguage.chinese
+        ? '以下为后端本次真实执行过的主要阶段。'
+        : 'These are the actual backend stages completed in this run.';
   }
 }

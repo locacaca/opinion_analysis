@@ -10,6 +10,7 @@ class AppLanguageProvider extends ChangeNotifier {
 
   AppLanguage get language => _language;
   bool get isChinese => _language == AppLanguage.chinese;
+  String get apiCode => isChinese ? 'zh' : 'en';
 
   void toggleLanguage() {
     _language = isChinese ? AppLanguage.english : AppLanguage.chinese;

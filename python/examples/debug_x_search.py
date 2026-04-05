@@ -1,4 +1,4 @@
-"""Debug old.reddit.com keyword search and optional database storage."""
+"""Debug X/Twitter keyword search on Nitter and optional database storage."""
 
 from __future__ import annotations
 
@@ -15,28 +15,28 @@ if str(PROJECT_ROOT) not in sys.path:
 from opinion_engine.cleaning import clean_opinion_records
 from opinion_engine.config import get_database_url
 from opinion_engine.models import SpiderRequest
-from opinion_engine.spiders.reddit_spider import RedditSearchSpider
+from opinion_engine.spiders.x_stub import XSearchSpider
 from opinion_engine.storage import OpinionStorage
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments for Reddit-only debugging."""
+    """Parse command-line arguments for X-only debugging."""
     parser = argparse.ArgumentParser(
-        description="Debug old.reddit.com keyword search with paginated collection.",
+        description="Debug Nitter-based X/Twitter keyword search with paginated collection.",
     )
     parser.add_argument("keyword", type=str, help='Keyword to collect, e.g. "DeepSeek".')
     parser.add_argument(
         "--limit",
         type=int,
         default=10,
-        help="Maximum Reddit posts to inspect.",
+        help="Maximum X posts to inspect.",
     )
     parser.add_argument(
         "--language",
         type=str,
         default="en",
         choices=["en", "zh"],
-        help="Language hint used in the Reddit search query.",
+        help="Language hint used in the Nitter search query.",
     )
     parser.add_argument(
         "--proxy",
@@ -71,7 +71,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--store",
         action="store_true",
-        help="Persist cleaned Reddit records into the local database.",
+        help="Persist cleaned X search records into the local database.",
     )
     parser.add_argument(
         "--verbose",
@@ -81,7 +81,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--artifact-dir",
         type=str,
-        default="python/debug_outputs/reddit_search",
+        default="python/debug_outputs/x_search",
         help="Directory for saved search-page screenshots and HTML.",
     )
     return parser.parse_args()
@@ -99,8 +99,8 @@ async def _run(
     verbose: bool,
     artifact_dir: str,
 ) -> dict[str, object]:
-    """Execute the old Reddit debug flow."""
-    spider = RedditSearchSpider(
+    """Execute the Nitter-based X debug flow."""
+    spider = XSearchSpider(
         proxy=proxy,
         headless=headless,
         slow_mode=slow_mode,
@@ -121,10 +121,10 @@ async def _run(
     if not store:
         return debug_result
 
-    posts = debug_result.get("posts", [])
-    if not isinstance(posts, list):
-        posts = []
-    records = spider.clean_data(posts)
+    tweets = debug_result.get("tweets", [])
+    if not isinstance(tweets, list):
+        tweets = []
+    records = spider.clean_data(tweets)
     clean_result = clean_opinion_records(records)
     storage = OpinionStorage()
     await asyncio.to_thread(storage.initialize)
@@ -137,13 +137,13 @@ async def _run(
             records=clean_result.records,
         )
     source_error = debug_result.get("collection_error")
-    source_errors = {"reddit": str(source_error)} if source_error else {}
+    source_errors = {"x": str(source_error)} if source_error else {}
     await asyncio.to_thread(
         storage.mark_run_collected,
         run_id=run_id,
         retained_count=stored_count,
         discarded_count=clean_result.discarded_count,
-        source_breakdown={"reddit": stored_count},
+        source_breakdown={"x": stored_count},
         source_errors=source_errors,
     )
     debug_result["storage"] = {
@@ -160,11 +160,11 @@ async def _run(
 
 def _print_verbose_preview(debug_result: dict[str, object]) -> None:
     """Print a compact human-readable preview of debug results."""
-    posts = debug_result.get("posts", [])
-    if not isinstance(posts, list):
+    tweets = debug_result.get("tweets", [])
+    if not isinstance(tweets, list):
         return
-    print(f"Collected {len(posts)} Reddit posts")
-    print("Search mode: old.reddit.com, sort=hot, local keyword relevance filter=enabled, promoted/ad filter=enabled")
+    print(f"Collected {len(tweets)} X posts")
+    print("Search mode: Nitter mirror, paginated collection, local keyword filter=enabled")
     search_pages = debug_result.get("search_pages", [])
     if isinstance(search_pages, list) and search_pages:
         first_page = search_pages[0]
@@ -172,38 +172,18 @@ def _print_verbose_preview(debug_result: dict[str, object]) -> None:
             print(f"Search URL: {debug_result.get('search_url', '')}")
             print(f"First page screenshot: {first_page.get('screenshot_path', '')}")
             print(f"First page HTML: {first_page.get('html_path', '')}")
-            print(f"First page final URL: {first_page.get('final_url', '')}")
-            print(f"First page HTTP status: {first_page.get('response_status', '')}")
-            print(f"First page load ms: {first_page.get('load_elapsed_ms', '')}")
             print(f"First page result count: {first_page.get('result_count_on_page', '')}")
             print(f"First page next URL: {first_page.get('next_page_url', '')}")
     collection_error = debug_result.get("collection_error")
     if collection_error:
         print(f"Collection error: {collection_error}")
-    retry_events = [
-        page
-        for page in search_pages
-        if isinstance(page, dict) and str(page.get("page_error", "")).strip()
-    ]
-    if retry_events:
-        print(f"Search page retries/errors: {len(retry_events)}")
-        for event in retry_events:
-            print(
-                "    "
-                f"page={event.get('page_index', '')} "
-                f"retry={event.get('retry_attempt', '')} "
-                f"status={event.get('response_status', '')} "
-                f"final_url={event.get('final_url', '')} "
-                f"load_ms={event.get('load_elapsed_ms', '')} "
-                f"error={event.get('page_error', '')}"
-            )
-    for index, item in enumerate(posts, start=1):
+    for index, item in enumerate(tweets, start=1):
         if not isinstance(item, dict):
             continue
-        print(f"[{index}] {item.get('title', '')}")
-        print(f"    subreddit={item.get('subreddit', '')} author={item.get('author', '')}")
-        print(f"    url={item.get('original_link', '')}")
-        print(f"    fetch_error={item.get('fetch_error')}")
+        print(f"[{index}] {item.get('display_name', '')} @{item.get('username', '')}")
+        print(f"    url={item.get('tweet_url', '')}")
+        print(f"    publish_date={item.get('publish_date', '')}")
+        print(f"    content={str(item.get('content', ''))[:180]}")
 
 
 def _resolve_sqlite_path(database_url: str) -> str | None:
@@ -215,7 +195,7 @@ def _resolve_sqlite_path(database_url: str) -> str | None:
 
 
 def main() -> None:
-    """Run the Reddit-only debug flow and print JSON output."""
+    """Run the X-only debug flow and print JSON output."""
     args = parse_args()
     result = asyncio.run(
         _run(

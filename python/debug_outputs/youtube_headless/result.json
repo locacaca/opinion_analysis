@@ -1,0 +1,1143 @@
+﻿{
+  "raw_search_result_count": 18,
+  "search_result_count": 12,
+  "skipped_short_count": 1,
+  "transcript_success_count": 5,
+  "videos": [
+    {
+      "video_id": "uRybPy3c2To",
+      "video_url": "https://www.youtube.com/watch?v=uRybPy3c2To",
+      "has_transcript": true,
+      "transcript_status": "verified",
+      "analysis_text_source": "transcript",
+      "transcript_text": "0 87000 About SQLite SQL light is a c language library that 440 3320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.440.3320 implements a small fast self-contained 7000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.3320.7000 High reliability full-featured SQL 9960 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.7000.9960 database engine it is the most used 12639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.9960.12639 database engine in the world SQL light 15759 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.12639.15759 is built into all mobile phones and most 18439 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.15759.18439 computers and comes bundled inside 20800 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.18439.20800 countless other applications that people 23359 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.20800.23359 use every day the code for SQL light is 27080 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.23359.27080 in the public domain and is thus free 29359 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.27080.29359 for use for any purpose commercial or 31920 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.29359.31920 private sqlite is an embedded SQL 35280 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.31920.35280 database engine unlike most other SQL 38399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.35280.38399 databases SQL light does not have a 41719 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.38399.41719 separate server process SQL light reads 45399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.41719.45399 and writes directly to ordinary disk 47640 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.45399.47640 files a complete SQL database with 51160 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.47640.51160 multiple tables indices triggers and 53879 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.51160.53879 Views is contained in a single disk file 57760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.53879.57760 the database file format is cross 60079 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.57760.60079 platform you can freely copy a database 62879 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.60079.62879 between 32bit and 64-bit systems or 66760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.62879.66760 between big endian or little Indian 69720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.66760.69720 architectures in this video you will 71880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.69720.71880 learn how to install sqlite and use its 74720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.71880.74720 command line tools you will also learn 77439 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.74720.77439 how to work with sqlite Studio guy tool 80640 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.77439.80640 for managing sqlite 83400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.80640.83400 databases let's take a look at SQL light 86079 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.83400.86079 data types and their Concepts most SQL 89119 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.86079.89119 169000 SQLite Data Types database engines use static or rigid 91680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.89119.91680 data types sqlite uses a more General 95000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.91680.95000 Dynamic data type system meaning a value 98240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.95000.98240 stored in a column determines its data 100520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.98240.100520 type not the column's data type the 103200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.100520.103200 dynamic type system of sqlite is 105880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.103200.105880 backwards compatible with the more 107799 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.105880.107799 common static type systems of other 109560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.107799.109560 database engines so statements that work 112200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.109560.112200 on statically typed databases work the 115119 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.112200.115119 same way in SQL light now let's take a 117920 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.115119.117920 look at some of the SQL light storage CL 120200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.117920.120200 classes null is a null value integer is 124439 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.120200.124439 ass signed integer stored as 0 1 2 3 4 6 129039 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.124439.129039 or8 bytes depending on the magnitude of 131520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.129039.131520 the value real is a floating point value 134680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.131520.134680 stored as an 8 by i e floating Point 137760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.134680.137760 number text is a text string stored 141120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.137760.141120 using the database encoding of 143400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.141120.143400 utf8 145640 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.143400.145640 utf-16be or utf16 148840 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.145640.148840 Le blob is a blob or binary long object 152599 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.148840.152599 of data stored exactly as it was input 156280 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.152599.156280 sqlite does not have a separate Boolean 158879 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.156280.158879 storage class here Boolean values are 162159 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.158879.162159 stored as integers zero for false and 165159 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.162159.165159 one for True let's take a look at sqlite 168440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.165159.168440 datetime data types sqlite does not have 171879 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.168440.171879 251000 SQLite Date/Time Data Types a storage class for storing dates or 174480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.171879.174480 times instead the built-in date and time 177319 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.174480.177319 functions of SQL light are capable AP 179920 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.177319.179920 able of storing dates and times as text 183080 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.179920.183080 real or integer 184879 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.183080.184879 values text is stored as ISO 8601 string 190640 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.184879.190640 real is stored as Julian day numbers and 194159 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.190640.194159 integer is stored as Unix time 197159 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.194159.197159 applications can choose to store dates 198959 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.197159.198959 and times in any of these formats and 201760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.198959.201760 freely convert between formats using the 204280 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.201760.204280 built-in date and time 206560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.204280.206560 functions here are some of the date and 208799 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.206560.208799 time functions 210439 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.208799.210439 date as text in this 212360 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.210439.212360 format time as text in this format date 216040 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.212360.216040 and time as text in this 218159 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.216040.218159 format juli and day are fractional 220680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.218159.220680 number of days since noon and grenage on 223200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.220680.223200 November 24th 225599 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.223200.225599 4,714 BC Unix epic is a Unix timestamp 230879 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.225599.230879 of the number of seconds since 1970 234400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.230879.234400 0101 236439 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.234400.236439 UTC St strf time is the day formatted 240599 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.236439.240599 according to the format string of the 242519 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.240599.242519 first argument time diff is amount of 245680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.242519.245680 time that must be added to be in order 248120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.245680.248120 to reach time 250120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.248120.250120 a let's take a look at the steps for 253040 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.250120.253040 320000 Installing SQLite installing SQL 255479 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.253040.255479 light first we will go to SQL light.org 260919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.255479.260919 then click on the download button since 262600 266360 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.262600.266360 we will be installing sqlite for Windows 269440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.266360.269440 we will will select under pre-compiled 271240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.269440.271240 binaries for Windows the zip file that 274240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.271240.274240 contains a bundle of command line 278120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.274240.278120 tools here we can see the downloaded zip 278880 282199 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.278880.282199 file next we'll create an sqlite 287199 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.282199.287199 folder and move the downloaded zip file 289800 293000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.289800.293000 to the folder we just 294919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.293000.294919 created now we will extract the contents 297479 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.294919.297479 of the zip file into the sqlite 302280 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.297479.302280 folder three files were extracted SQL d. 303639 307320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.303639.307320 exe sqlite 3.exe 310520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.307320.310520 and sqlite 3or analyzer 316199 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.310520.316199 exe here are some descriptions of the 318639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.316199.318639 sqlite command line 320520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.318639.320520 357000 SQLite Command Line Tools Summary tools sqlite 3 is a simple command line 324840 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.320520.324840 program that allows the user to manually 327400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.324840.327400 enter and execute SQL statements 330240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.327400.330240 against an sqlite database SQL diff is a 334039 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.330240.334039 command line utility program that 336400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.334039.336400 displays content differences between 338680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.336400.338680 sqlite databases sql3 analyzer is a 343199 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.338680.343199 commandline utility program that 345360 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.343199.345360 measures and displays how much and how 347759 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.345360.347759 efficiently spaces used by individual 350319 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.347759.350319 tables and indexes with an SQL light 353319 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.350319.353319 database 354560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.353319.354560 file let's take a look at some examples 357639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.354560.357639 458000 SQLite3 Example using the SQL light3 exe command line 360919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.357639.360919 tool first we will create a database 363600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.360919.363600 named my company. DB if my company. DB 367400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.363600.367400 did exist then this command would open 369599 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.367400.369599 it alternatively at the SQL light prompt 372720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.369599.372720 you could use the openen command to do 375080 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.372720.375080 the same thing entering doelp gives a 378280 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.375080.378280 listing of available commands next we 381039 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.378280.381039 will create a table named employee then 383960 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.381039.383960 create a column named ID of type integer 386960 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.383960.386960 as a primary key and a columned named 389880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.386960.389880 employee number of type integer a column 392800 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.389880.392800 named first name of type text a column 396080 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.392800.396080 named last name of type text and the 398840 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.396080.398840 column named higher date of type text 402120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.398840.402120 next we will create a table named salary 404759 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.402120.404759 then create a column named ID of type 407199 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.404759.407199 integer as a primary key and the column 410479 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.407199.410479 named employee ID of type integer a 413599 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.410479.413599 column named salary of type real and a 416680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.413599.416680 column named date of salary of type text 420039 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.416680.420039 followed by referencing the ID column of 422759 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.420039.422759 the employee table the tables command 426000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.422759.426000 shows the tables that are contained in 428080 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.426000.428080 the my company database next we will 430879 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.428080.430879 insert two rows into the employee table 433960 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.430879.433960 then list the rows in the employe table 436479 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.433960.436479 now we will insert two rows into the 438199 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.436479.438199 salary table then list the rows in the 441000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.438199.441000 salary 442120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.441000.442120 table here we can see my company. DB has 445720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.442120.445720 been created in the SQL light 448520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.445720.448520 folder 451520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.448520.451520 for this example of using SQL diff we 451919 454919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.451919.454919 will use two identical databases car 457479 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.454919.457479 parts one. DB and car parts 2. DB that 461479 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.457479.461479 569000 SQLDiff Example contain two tables customer and parts 464240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.461479.464240 order with pre-populated data in each 468159 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.464240.468159 table the --el switch shows a list of 471560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.468159.471560 available options that can be used with 473840 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.471560.473840 SQL 475400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.473840.475400 diff using SQL diff on both of the 478440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.475400.478440 databases we can see there was no 481039 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.478440.481039 difference found since they are 484919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.481039.484919 identical now let's open carports 2. 488560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.484919.488560 DB and add two rows to the customer 493240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.488560.493240 table then run SQL diff again here the 496680 500440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.496680.500440 output displays the commands that are 502199 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.500440.502199 necessary to transform car parts 1 DB to 505560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.502199.505560 car parts 2. 507840 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.505560.507840 DB reversing the databases shows what is 511599 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.507840.511599 necessary to transform car parts 2. DB 515080 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.511599.515080 to car parts 1. DB next we'll look at an 518800 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.515080.518800 example using the command line switch D- 521560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.518800.521560 schema that shows only column name and 524320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.521560.524320 table differences in the schema not the 526720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.524320.526720 table content first we'll open carports 529880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.526720.529880 2. DB then add a column called total 533600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.529880.533600 quantity of type reel to the customer 537120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.533600.537120 table using the command line switch 539399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.537120.539399 which-- schema the output displays the 542480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.539399.542480 commands that are necessary to transform 544760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.542480.544760 carparts 1. DB to carparts 2. 549839 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.544760.549839 553160 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.549839.553160 556800 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.553160.556800 to car parts 1. DB in this case it shows 560240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.556800.560240 that the customer table will need to be 562200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.560240.562200 deleted and recreated using the given 567360 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.562200.567360 schema the sqli analyzer exe binary is a 572440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.567360.572440 637000 About SQLite3_Analyzer 574440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.572440.574440 576959 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.574440.576959 579760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.576959.579760 tables and indexes with an sqlite 583000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.579760.583000 database file example usage looks like 586600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.583000.586600 the following the output is a human 589079 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.586600.589079 readable asky text report that provides 591959 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.589079.591959 information on the space utilization of 594360 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.591959.594360 the database file the report is intended 597200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.594360.597200 to be 598000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.597200.598000 self-explanatory though there is some 599880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.598000.599880 additional explanation of the various 602200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.599880.602200 parameters reported toward the end of 604399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.602200.604399 the report the output is also valid SQL 608680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.604399.608680 most of the report text is contained 610560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.608680.610560 within a header comment with various SQL 613279 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.610560.613279 statements that create and initialize a 615720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.613279.615720 database at the end of the report the 618680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.615720.618680 constructed database contains the raw 620720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.618680.620720 data from which the report was extracted 624000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.620720.624000 the original report can be read into an 626480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.624000.626480 instance of the command line shell and 628680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.626480.628680 then the raw dat data can be queried to 630760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.628680.630760 dig deeper into the space utilization of 633680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.630760.633680 a particular database 636440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.633680.636440 file let's take a look at an example 639160 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.636440.639160 694000 SQLite3_Analyzer Example using SQL I3 analyzer on the carports 2. 643639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.639160.643639 DV database the output provides a report 646880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.643639.646880 detailing size and storage efficiency 649160 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.646880.649160 information for the database and its 651480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.649160.651480 tables and 653519 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.651480.653519 indexes information is provided for each 658240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.653519.658240 table 660360 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.658240.660360 followed by definitions of each 663959 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.660360.663959 item the end of the report contains 666160 668720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.666160.668720 various SQL statements that create and 671639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.668720.671639 initialize a database the construct a 674600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.671639.674600 database contains the raw data from 676760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.674600.676760 which the report was extracted hence the 679760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.676760.679760 original report can be read into an 682120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.679760.682120 instance using the command line shell 684800 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.682120.684800 and then the raw data can be queried to 686880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.684800.686880 689880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.686880.689880 693079 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.689880.693079 file the SQL I3 command line shell works 696760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.693079.696760 737000 SQLiteStudio Intro well however sometimes you might want to 699040 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.696760.699040 work with sqlite databases by using an 702240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.699040.702240 intuitive guey tool sqlite studio tool 706200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.702240.706200 is a free goey tool for managing sqlite 709480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.706200.709480 databases it is free portable intuitive 713000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.709480.713000 and crossplatform 714560 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.713000.714560 sqlite studio also provides important 717760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.714560.717760 features such as importing and exporting 720399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.717760.720399 data in various formats including CSV 724440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.720399.724440 XML and 726279 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.724440.726279 Json in this next video you will learn 729200 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.726279.729200 how to install sqlite studio and explore 732440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.729200.732440 some of its 733880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.732440.733880 uses let's take a look at the steps for 736880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.733880.736880 installing sqlite Studio first we'll go 740480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.736880.740480 788000 Installing SQLiteStudio to the SQL light Studio 744040 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.740480.744040 website and click on the download button 745600 751000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.745600.751000 then open up the download folder and run 753320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.751000.753320 the installation that was just 755120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.753320.755120 downloaded click on the next button and 758120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.755120.758120 select I accept the agreement then click 761360 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.758120.761360 on the next button and accept the 766000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.761360.766000 defaults select launch SQL light studio 778120 781320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.778120.781320 now and click 784639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.781320.784639 finish let's take a look at an example 787199 790000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.787199.790000 1014000 Creating Database/Tables With SQLiteStudio of creating a database and two tables 793000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.790000.793000 using SQL light 795040 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.793000.795040 Studio first we'll create a 797639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.795040.797639 database and we'll name it carports 3. 803680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.797639.803680 DB next we'll connect to the 807399 810320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.807399.810320 database and we'll create a table and 813199 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.810320.813199 we'll call the 814399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.813199.814399 816079 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.814399.816079 customer now we'll create a column 818839 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.816079.818839 called 819920 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.818839.819920 ID of type 823160 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.819920.823160 integer assign it as a primary key and 826920 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.823160.826920 set it as autoincrement 830399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.826920.830399 next we will create a customer number 831839 834680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.831839.834680 column of type 838040 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.834680.838040 integer 840639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.838040.840639 and we'll create another column called 842600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.840639.842600 first name of type 846519 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.842600.846519 text and a last name column of type 848920 854160 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.848920.854160 text an address column of type 855800 860240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.855800.860240 text a city column of type 863120 867639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.863120.867639 text 868040 870120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.868040.870120 a state column of type 873680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.870120.873680 text postal code column of type 876079 880639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.876079.880639 text and a country column also of type 882759 888000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.882759.888000 text then we'll commit this table to the 889759 894480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.889759.894480 898040 901040 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.898040.901040 next we'll create a second 902519 905639 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.902519.905639 table and we'll call it Parts 909399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.905639.909399 order now we'll create a column called 913279 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.909399.913279 916519 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.913279.916519 920279 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.916519.920279 923759 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.920279.923759 next we'll create a customer ID column 924800 928279 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.924800.928279 of type inte 930480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.928279.930480 assign it as a foreign key and have it 933440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.930480.933440 reference the ID column of the customer 938000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.933440.938000 table then we'll create an order date 940000 942800 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.940000.942800 946319 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.942800.946319 text and create a ship date column of 949639 952680 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.949639.952680 type 955079 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.952680.955079 text a quantity column of type 957920 962920 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.957920.962920 integer an item number column of type 966639 971800 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.966639.971800 integer an item name column of type 975319 980920 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.975319.980920 text and of course column of type 983759 987920 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.983759.987920 real now we will commit this table to 990880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.987920.990880 the 993040 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.990880.993040 database in the left hand pane we can 998800 1001399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.998800.1001399 see the two tables that were 1003399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1001399.1003399 created along with their 1007160 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1003399.1007160 columns let's take a look at an example 1013639 1016399 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1013639.1016399 1119000 Adding Data With SQLiteStudio of how to enter data into the customer 1018319 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1016399.1018319 table using SQL light 1021480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1018319.1021480 Studio first we'll click on the data tab 1024959 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1021480.1024959 then click on the insert row button next 1028079 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1024959.1028079 we'll enter data for customer number 1031079 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1028079.1031079 first name last name address 1035000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1031079.1035000 city state postal code and 1039600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1035000.1039600 Country then we'll click on the commit 1041839 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1039600.1041839 button to add this data to the customer 1045640 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1041839.1045640 table here we can see that 90 of 1 was 1049400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1045640.1049400 added automatically since we had Define 1051760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1049400.1051760 this column as autoincrement 1054400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1051760.1054400 an alternate way of entering data can be 1057280 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1054400.1057280 done by importing data using a CSV file 1060960 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1057280.1060960 for this example we created a CSV file 1064160 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1060960.1064160 as shown here since the last row entered 1067559 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1064160.1067559 and the customer table contains a one 1069320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1067559.1069320 for the ID column we have started ID 1072039 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1069320.1072039 with a value of two this is necessary 1075240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1072039.1075240 since the ID column has been defined as 1077159 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1075240.1077159 a primary key where no duplicates are 1080520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1077159.1080520 allowed now we will click on the import 1083080 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1080520.1083080 data to table button and select the 1085960 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1083080.1085960 customer table then click next select 1089919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1085960.1089919 CSV as the data source type select the 1093440 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1089919.1093440 CSV file to import and select comma as 1097760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1093440.1097760 the column separator then 1101640 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1097760.1101640 finish here we can see the data that was 1102559 1105320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1102559.1105320 just 1107559 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1105320.1107559 imported 1107760 1110760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1107760.1110760 here we will take a look at how to apply 1118600 1120600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1118600.1120600 1157000 About Data Encryption data encryption using SQL Cipher to an 1124320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1120600.1124320 SQL light database SQL Cipher is a 1127600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1124320.1127600 security extension to the SQL light 1129799 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1127600.1129799 database platform that facilitates the 1132480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1129799.1132480 creation of encrypted 1134320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1132480.1134320 databases SQL Cipher is an open source 1137400 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1134320.1137400 library that provides transparent secure 1141919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1137400.1141919 256-bit AES encryption of SQL light 1145840 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1141919.1145840 database files all data in the main 1148600 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1145840.1148600 database file is encrypted the 1150919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1148600.1150919 encryption algorithm is 1152919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1150919.1152919 256bit AES in CBC 1156720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1152919.1156720 mode Let's create an encrypted database 1160000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1156720.1160000 1269000 Data Encryption Example With SQLiteStudio with a 1161520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1160000.1161520 password for database type we'll select 1164880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1161520.1164880 1167480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1164880.1167480 Cipher then we'll create a database 1170320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1167480.1170320 named my secur dat. 1174919 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1170320.1174919 DB next we'll add a password which can 1176760 1179640 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1176760.1179640 be a maximum of 16 1181880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1179640.1181880 characters then click on 1185039 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1181880.1185039 okay then connect to the 1187720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1185039.1187720 database in order for the password to be 1190080 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1187720.1190080 applied you'll need to create something 1191799 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1190080.1191799 in the 1192880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1191799.1192880 database so we will create a 1195720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1192880.1195720 table that has an ID column of type 1200720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1195720.1200720 integer that is a primary key and has 1204240 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1200720.1204240 autoincrement 1206760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1204240.1206760 set now we will remove the database from 1213799 1217120 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1213799.1217120 sqlite 1218720 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1217120.1218720 studio and then add it 1222640 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1218720.1222640 back here we will enter an incorrect 1226880 1229880 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1226880.1229880 password and see an error message is 1234559 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1229880.1234559 generated entering the correct password 1235480 1238320 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1235480.1238320 opens the database 1241480 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1238320.1241480 successfully I hope you found 1252919 1254679 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1252919.1254679 introduction to sqlite helpful if you 1257760 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1254679.1257760 have click on the like 1260039 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1257760.1260039 button and to receive any updates to 1262520 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1260039.1262520 this channel click on the Subscribe 1265000 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1262520.1265000 button thank you so much for watching 1270159 uRybPy3c2To.CgNhc3ISAmVuGgA%3D.1265000.1270159 No results found TAP TO RETRY English (auto-generated) Cgt1UnliUHkzYzJUbxISQ2dOaGMzSVNBbVZ1R2dBJTNEGAEqM2VuZ2FnZW1lbnQtcGFuZWwtc2VhcmNoYWJsZS10cmFuc2NyaXB0LXNlYXJjaC1wYW5lbDAAOAFAAA%3D%3D CAUQxqYCIhMI7KHy9aHRkwMV6ks4BR2ofiMfygEEBIT-5A== Search in video CLOSE CIMDEKvaByITCOyh8vWh0ZMDFepLOAUdqH4jH8oBBASE_uQ= engagement-panel-searchable-transcript-search-panel",
+      "transcript_language": "en",
+      "transcript_segment_count": 3176,
+      "comments_count": 0,
+      "comments_text": "",
+      "title": "Introduction To SQLite And SQLiteStudio",
+      "author": "Relational Databases and SQL for Beginners",
+      "description": "Welcome to Introduction to SQLite!\nAs a powerful database system, SQLite has become a staple in many businesses across the world.\nIn this video, we'll be going over various SQLite data types and storage classes.\nWe'll also cover the installation process and demonstrate how to use its command line tools to create, modify, and query a database.\nWe'll also explore the differences between databases and analyze the space utilization of SQLite databases.\nFrom there, we'll dive into SQLiteStudio, a user-friendly GUI tool that makes database management a breeze.\nWith SQLiteStudio, we'll show you how to create tables, add data, and even work with data encryption to keep your information safe and secure.\nWith this knowledge, you'll be well-equipped to tackle any database-related task.\n\nLinks related to this video:\nhttps://sqlite.org/index.html\nhttps://sqlitestudio.pl/\n\nSQL scripts and csv files used in video:\nhttps://github.com/RelationalDatabasesForBeginners/IntroductionToSQLiteAndSQLiteStudio\n\n00:00 About SQLite\n01:27 SQLite Data Types\n02:49 SQLite Date/Time Data Types\n04:11 Installing SQLite\n05:20 SQLite Command Line Tools Summary\n05:57 SQLite3 Example\n07:38 SQLDiff Example\n09:29 About SQLite3_Analyzer\n10:37 SQLite3_Analyzer Example\n11:34 SQLiteStudio Intro\n12:17 Installing SQLiteStudio\n13:08 Creating Database/Tables With SQLiteStudio\n16:54 Adding Data With SQLiteStudio\n18:39 About Data Encryption\n19:17 Data Encryption Example With SQLiteStudio\n#sqlite3 #sqlite #sqltutorial",
+      "publish_date": "2024-03-18T17:19:50Z",
+      "views": 3924,
+      "length_seconds": 1269,
+      "thumbnail_url": "https://i.ytimg.com/vi/uRybPy3c2To/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=uRybPy3c2To",
+        "page_title": "Introduction To SQLite And SQLiteStudio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 21:08\nAbout SQLite\nIntroduction To SQLite And SQLiteStudio\nRelational Databases and SQL for Beginners\n401 subscribers\nSubscribe\n120\nShare\nSave\n3.9K views  2 years ago  #sqltutorial #sqlite3 #sqlite\nWelcome ",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "youtube_transcript_panel_dom",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 762,
+            "ytd-transcript-search-panel-renderer": 2,
+            "ytd-transcript-segment-list-renderer": 2,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 2
+          },
+          "segment_count": 0,
+          "panel_preview": "In this video\nChapters\nTranscript\nAbout SQLite\n0:00\nSQL light is a c language library that\n0:03\nimplements a small fast self-contained\n0:07\nHigh reliability full-featured SQL\n0:09\ndatabase engine it is the most used\n0:12\ndatabase engine in the world SQL light\n0:15\nis built into all mobile phones and most\n0:18\ncomputers and comes bundled inside\n0:20\ncountless other applications that people\n0:23\nuse every day the code for SQL light is\n0:27\nin the public domain and is thus free\n0:29\nfor use for any purpose commercial or\n0:31\nprivate sqlite is an embedded SQL\n0:35\ndatabase engine unlike most other",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 33576,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 200,
+              "body_length": 159670,
+              "normalized_json": true,
+              "parsed_text_length": 33576
+            }
+          ],
+          "attempt_count": 1,
+          "extraction_mode": "panel_network_response"
+        },
+        "comments_debug": {}
+      },
+      "transcript_error": null
+    },
+    {
+      "video_id": "-uhcLoVIjC8",
+      "video_url": "https://www.youtube.com/watch?v=-uhcLoVIjC8",
+      "has_transcript": true,
+      "transcript_status": "verified",
+      "analysis_text_source": "transcript",
+      "transcript_text": "hi everyone in this video we are going 900 3300 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.900.3300 to use this again SQL Studio 6299 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.3300.6299 light studio and in this SQL light 9300 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.6299.9300 Studio we will be adding some databases 11880 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.9300.11880 and we will be creating some tables here 13920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.11880.13920 so in our previous video we have set up 17640 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.13920.17640 this sqlite studio which is actually 20279 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.17640.20279 graphical user interface to SQL live 22740 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.20279.22740 database 24660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.22740.24660 and now 26039 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.24660.26039 I am going to start the sqlite studio 28320 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.26039.28320 again here just by double clicking there 31380 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.28320.31380 and after that we will have the 33780 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.31380.33780 graphical user interface of sqlite 36180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.33780.36180 studio in front of us and then the first 38820 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.36180.38820 step will be to create to add some 41520 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.38820.41520 databases so it may it is taking some 43980 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.41520.43980 time because I am on a virtual machine 45780 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.43980.45780 maybe double click again here 48600 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.45780.48600 so because of virtual machine and then 50760 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.48600.50760 also my the speed there internet speed 54360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.50760.54360 uh not internet speed but the computer 57360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.54360.57360 so now we have this interface in front 59579 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.57360.59579 of us and now to create database here we 65100 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.59579.65100 have to just click on this database and 67920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.65100.67920 yes by the way this is the interface for 70320 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.67920.70320 SQL studio and on this side on the left 73140 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.70320.73140 hand side you can see we will have the 74820 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.73140.74820 databases there but at the moment we 77040 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.74820.77040 don't have any databases because we have 79380 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.77040.79380 not created any database yet so for that 83040 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.79380.83040 to create database or to add database 84960 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.83040.84960 here we just click test databases and 87600 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.84960.87600 then we click on add a database here 90479 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.87600.90479 and then here we can select the database 93479 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.90479.93479 type so we are selecting SQL Lite 3 and 98220 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.93479.98220 then you can see we have the other 99540 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.98220.99540 version as well but we are selecting 102619 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.99540.102619 sqlite3 and then here we have to select 105659 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.102619.105659 a path we can see here we have to create 107939 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.105659.107939 a new database database file so for that 111240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.107939.111240 I'm going to click on this one here and 114899 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.111240.114899 then you can see this is 116939 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.114899.116939 and the the location where this will be 120420 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.116939.120420 created the setup file will be created 122640 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.120420.122640 let's say we give it as a name let's say 126299 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.122640.126299 I'm giving the first ones a test 128759 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.126299.128759 test is the name of databases Maybe 131400 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.128759.131400 you can have any name there so I'm going 133920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.131400.133920 to click save here and then you can see 137160 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.133920.137160 this database with file path and this 139620 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.137160.139620 name has been selected which I selected 144239 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.139620.144239 now and now it says that this has been 147180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.144239.147180 done and just I click ok so with this 150480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.147180.150480 you can see uh our first database is 154319 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.150480.154319 shown on this in this database pen you 157080 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.154319.157080 can see here 159480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.157080.159480 and now after this 161819 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.159480.161819 in this database if you want to maybe 164099 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.161819.164099 create some tables here so when I double 166500 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.164099.166500 click this on this database you can see 168720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.166500.168720 we have tables and Views and when I 171300 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.168720.171300 click on table here you don't have 173580 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.171300.173580 anything yes we don't have anything and 176340 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.173580.176340 now here if you want to create tables 179400 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.176340.179400 then maybe we just right click there and 181980 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.179400.181980 you can see we have an option to create 183900 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.181980.183900 a tab 185040 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.183900.185040 you click on that create a table and 187500 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.185040.187500 then this window is shown which is on 190379 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.187500.190379 the and on the right hand side you can 192239 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.190379.192239 see this the table and this table will 194340 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.192239.194340 be created in this database you can see 196260 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.194340.196260 we have only one database that is test 198120 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.196260.198120 otherwise if we have multiple databases 200580 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.198120.200580 maybe we can select those databases from 202860 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.200580.202860 here now in this test database we are 206340 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.202860.206340 going to create our very first table so 209819 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.206340.209819 let's say that first table can have any 213599 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.209819.213599 name let's say we are going to give it a 215879 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.213599.215879 name of student 217980 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.215879.217980 and this is a name of our table 221220 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.217980.221220 and after we have selected the name for 224340 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.221220.224340 the table we can add some columns in it 228480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.224340.228480 in that table and to add columns in this 231840 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.228480.231840 table we just have to go here you can 234239 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.231840.234239 see this somehow shows that this is a 236400 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.234239.236400 vertical line here so that shows this is 239459 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.236400.239459 the option to add columns there when I 242760 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.239459.242760 click there so this shows me the a 246480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.242760.246480 window where I can select any name for 249180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.246480.249180 this column so let's say for the First 251700 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.249180.251700 Column name I am going to select a name 253860 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.251700.253860 that is student 255480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.253860.255480 ID let's say and data type or student ID 259500 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.255480.259500 can be let's say that can be integer 263940 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.259500.263940 and then we can also specify the other 266160 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.263940.266160 things let's say I'm selecting that this 268320 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.266160.268320 this student ID will be primary key so 271680 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.268320.271680 you can see if we have other option as 273360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.271680.273360 well not null you need for n key but at 276600 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.273360.276600 the moment we are selecting this student 278220 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.276600.278220 ID to be the primary key for this table 282419 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.278220.282419 and then I'm selecting OK and with this 285780 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.282419.285780 you can see we have very first column in 289139 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.285780.289139 our table we have inserted First Column 291660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.289139.291660 and the same way if you want to add 293520 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.291660.293520 second column let's say again we select 295800 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.293520.295800 on that vertical line and this new 297540 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.295800.297540 window appears and the name for the 299820 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.297540.299820 second column can be let's say first 301919 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.299820.301919 name for the student 303960 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.301919.303960 and that can be let's say that can be of 306720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.303960.306720 character or chart 308580 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.306720.308580 type and then we just click ok to make 311699 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.308580.311699 it simple that is 313440 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.311699.313440 okay and this is our second column in 317400 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.313440.317400 the same way we can add third column 319380 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.317400.319380 here let's say that third column can be 322039 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.319380.322039 the last name of student 325139 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.322039.325139 and data type again we can specify here 327720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.325139.327720 again same 329580 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.327720.329580 and then we click ok so that can be Char 332580 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.329580.332580 or character data type and then click ok 335160 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.332580.335160 so now we have these three columns 339120 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.335160.339120 so after creating table we added three 342180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.339120.342180 columns in it and after that we need to 345120 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.342180.345120 click on this tick and this is the 348240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.345120.348240 commit structure changes so when we 350880 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.348240.350880 click there then it will show us some 355320 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.350880.355320 queries to be executed so as a result of 357960 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.355320.357960 that this SQL query will be executed and 362039 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.357960.362039 if you are a bit familiar with this SQL 365039 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.362039.365039 then you can see this create table this 366780 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.365039.366780 is a table name and these are different 368699 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.366780.368699 attributes of that and after this we if 371520 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.368699.371520 we just click ok 374220 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.371520.374220 then you can see here we also have the 378180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.374220.378180 status that may be at this time during 380880 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.378180.380880 it took this much time and this 383039 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.380880.383039 committed change for the table student 385259 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.383039.385259 successfully it means table has been 387720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.385259.387720 created in our uh database and that was 391979 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.387720.391979 a test databases 393780 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.391979.393780 and you can click also here for to 396060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.393780.396060 refresh structure 398100 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.396060.398100 and then this refresh structure and then 401160 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.398100.401160 if you want to see that what is in our 404120 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.401160.404120 tables here so that was the tables and 407460 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.404120.407460 within that table we have this student 410100 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.407460.410100 table here 411600 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.410100.411600 and within that student table we have 413819 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.411600.413819 these columns one columns so yes can we 418199 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.413819.418199 click on this column we have this column 419940 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.418199.419940 student ID first name and the last name 423900 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.419940.423900 in the same way if we don't have 425699 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.423900.425699 actually at the moment we don't have any 427319 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.425699.427319 indexes we don't have triggers also we 429720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.427319.429720 don't have creative we haven't created 431400 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.429720.431400 any views but if we create these views 433620 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.431400.433620 then we can find those views as well 436199 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.433620.436199 so at the moment we just have created 437880 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.436199.437880 one table 439380 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.437880.439380 and in the same way if you want to 441539 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.439380.441539 create maybe other tables then we just 444180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.441539.444180 click on uh sorry right click on this 446580 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.444180.446580 tables and you can see it shows that how 448680 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.446580.448680 we can create more tables in the in the 451979 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.448680.451979 same database and the database name is 454259 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.451979.454259 test if you remember 456539 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.454259.456539 so this is how we can create tables and 459840 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.456539.459840 how we can add columns in SQL light 462960 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.459840.462960 Studio 464240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.462960.464240 and now after this if let's say 469080 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.464240.469080 if you want to run some SQL query to 472080 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.469080.472080 find some specific information from that 475020 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.472080.475020 table so for that we will just go in the 479039 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.475020.479039 menu bar here 480720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.479039.480720 and in the menu bar we can click on this 484440 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.480720.484440 tools 485699 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.484440.485699 and after that you can see we have this 488340 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.485699.488340 open SQL editor you click there and then 492900 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.488340.492900 in this SQL editor we can say let's say 496020 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.492900.496020 we can say we can run some SQL query so 499620 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.496020.499620 that is SE select or select select and 504419 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.499620.504419 start you can select all 507060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.504419.507060 and we want to select all from a table 510360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.507060.510360 and that table name was what was the 513839 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.510360.513839 name tab that table name was student 516419 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.513839.516419 say a student 519740 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.516419.519740 and then we just say I'm a colon so 523979 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.519740.523979 after this 525240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.523979.525240 and query we just have to click here you 529140 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.525240.529140 can see this play button so display 530940 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.529140.530940 button will execute this query and when 534480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.530940.534480 we click there we should have a result 536880 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.534480.536880 here but it says that we have made 539399 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.536880.539399 somewhere maybe mistake if we remove 541320 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.539399.541320 this one 542899 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.541320.542899 and click then again maybe still I've 547080 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.542899.547080 made some mistake 549600 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.547080.549600 um 551480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.549600.551480 yes maybe instead of star I just use 555180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.551480.555180 maybe other 557899 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.555180.557899 yeah so I think now this was the error 561779 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.557899.561779 so you can see this we can we are 563519 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.561779.563519 getting error messages in the status 565800 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.563519.565800 bar 566940 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.565800.566940 so now again if I execute this query you 570180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.566940.570180 can see how it says that query finished 572100 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.570180.572100 in this much time so this is actually 574440 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.572100.574440 status bar also shows that how much time 576860 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.574440.576860 uh was taken by this query and this may 580320 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.576860.580320 be helpful for query optimizations in 583200 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.580320.583200 some of the cases so query has been 585480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.583200.585480 executed and now we have discrete View 588920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.585480.588920 and this is the result here but remember 592320 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.588920.592320 we have not added any data in this table 595200 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.592320.595200 we just created tables and we added an 597360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.595200.597360 uh the names of those columns and now if 602700 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.597360.602700 we want to add data in that table then 606240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.602700.606240 we again go to our table here and then 608880 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.606240.608880 we need to go to our columns let's say 611240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.608880.611240 and in this column 615480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.611240.615480 so this was query 618600 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.615480.618600 and yeah this is query and this is our 620700 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.618600.620700 table sorry in this bar here down you 622920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.620700.622920 can see this query we need to go back to 625080 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.622920.625080 our student table like this and after we 628620 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.625080.628620 uh when we add this so you can see this 630660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.628620.630660 here at the bottom we have this SQL 632940 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.630660.632940 query editor it's different thing and 634920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.632940.634920 here we have the student table itself 636720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.634920.636720 within test database so click there and 640320 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.636720.640320 now to add data in our table we have to 643680 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.640320.643680 click on this tab oh sorry data here 648360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.643680.648360 and in data you can see we have these 651060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.648360.651060 column names and now to add data we'll 655560 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.651060.655560 click on this plus button here so this 658800 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.655560.658800 shows that insert row and we need to 661140 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.658800.661140 click there and we can see this is the 663360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.661140.663360 first row where we have to put 666240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.663360.666240 information for student ID let's say 668940 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.666240.668940 first student has a student ID of 0 0 1 672060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.668940.672060 so just we have sorry we have to just 674100 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.672060.674100 click here double click 0 0 1 just a 677940 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.674100.677940 second maybe num lock is there sorry for 680100 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.677940.680100 that 681060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.680100.681060 so that will be 0 0 1 and let's say 684899 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.681060.684899 first name can be any name here and 688800 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.684899.688800 let's pick any 690720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.688800.690720 New Beat 692880 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.690720.692880 and 694500 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.692880.694500 let's say last name will be JD and then 697680 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.694500.697680 maybe if we click there and 701399 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.697680.701399 if it deletes selected row we can also 704220 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.701399.704220 delete this one because we have added 706019 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.704220.706019 many rows mistakenly so I'm going to 708660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.706019.708660 click this row and delete this one 711500 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.708660.711500 and maybe for rest of the rows we can 714839 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.711500.714839 put some data here and we can say this 718140 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.714839.718140 first name is GD and here we can say 721640 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.718140.721640 networking and we can have third student 726000 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.721640.726000 three and we can say newbie 729660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.726000.729660 you can say maybe GD like this so we 732360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.729660.732360 have fill uh this uh these columns and 735839 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.732360.735839 we have created three rows in this table 738060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.735839.738060 and after creating these all we have to 740760 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.738060.740760 click on this 742700 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.740760.742700 tick so that is to commit these all 745920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.742700.745920 changes click there 747839 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.745920.747839 and if everything is fine then we should 750660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.747839.750660 have that this has been done 755240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.750660.755240 and yes and after this we can click on 759779 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.755240.759779 refresh button and we have this 762000 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.759779.762000 and now if you go back to our SQL query 765180 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.762000.765180 editor here 766620 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.765180.766620 click there and now if we run this query 769560 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.766620.769560 let's see if we click there 771839 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.769560.771839 and now you can see we have this view we 775560 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.771839.775560 have the data which we just entered but 777240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.775560.777240 now we are in this SQL editor and this 779459 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.777240.779459 was our table 780660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.779459.780660 and now you can see we have this result 783899 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.780660.783899 from this query where we have selected 786480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.783899.786480 all of the elements from student table 790800 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.786480.790800 and now we have some other options you 793740 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.790800.793740 can see here if you just hover over 795480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.793740.795480 there if you click on this one 798060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.795480.798060 and T and with t you can see the format 801420 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.798060.801420 has been changed so that is only for 803579 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.801420.803579 formatting this this text 805980 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.803579.805980 and then we have here we if you want to 809160 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.805980.809160 clear execution history and then you can 813420 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.809160.813420 see this is export results so whatever 816000 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.813420.816000 results we receive here we can also 818279 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.816000.818279 export those results by just clicking 820680 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.818279.820680 here we just have to click there and 823139 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.820680.823139 then a new window appears and in this 825660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.823139.825660 new window it shows that what you want 828660 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.825660.828660 to export so we want to export the 831060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.828660.831060 result of this query and then we have to 833579 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.831060.833579 click next 834720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.833579.834720 and then says that what should be the 837420 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.834720.837420 output so export format you click there 840779 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.837420.840779 you can see we have htmljs and PDF CSV 844680 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.840779.844680 so you can select the format of the 847260 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.844680.847260 exported file and then you can also 849779 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.847260.849779 select some names here so let's say name 852420 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.849779.852420 can be any name here and then you have 854940 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.852420.854940 to just click on finish 857519 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.854940.857519 so after this this result 861420 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.857519.861420 would have been exported in in the 863700 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.861420.863700 folder where you have sqlite or sqlite 866399 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.863700.866399 868380 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.866399.868380 so that was for export and then we have 870959 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.868380.870959 another option that is to create view 873779 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.870959.873779 from query so you can also create views 876000 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.873779.876000 like this so if you click there it 878820 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.876000.878820 should create some 880860 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.878820.880860 so that that can be used to create views 883680 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.880860.883680 so after that you have to commit it and 886620 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.883680.886620 then we say yes 888480 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.886620.888480 okay and then now you can see in The 891240 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.888480.891240 View 892139 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.891240.892139 so before that we had nothing but now we 894779 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.892139.894779 also have a view we have been selected 896880 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.894779.896880 any name for that but now we have we 899399 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.896880.899399 have created a view and you can see here 901920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.899399.901920 uh 903360 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.901920.903360 there are three different tabs this is 905699 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.903360.905699 for view this is for SQL editor and this 908279 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.905699.908279 is the original student table we created 911579 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.908279.911579 so in this way you can see we can have a 914779 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.911579.914779 structure we can have some constant we 917339 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.914779.917339 can have index indexes if we can create 919800 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.917339.919800 triggers also they are also possible so 922440 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.919800.922440 a lot of things are there to explore in 924720 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.922440.924720 this sqlite studio and this is a 929040 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.924720.929040 lightweight and this is used in mobile 931980 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.929040.931980 phone this is used in embedded systems 934199 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.931980.934199 this is used in iot this is used in 936600 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.934199.936600 browsers so very much helpful very much 939600 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.936600.939600 important database engine which we just 944060 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.939600.944060 demonstrated some of the things which we 946680 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.944060.946680 can do in this sqlite studio and yeah so 951000 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.946680.951000 hopefully this was a bit helpful for 952920 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.951000.952920 some of you 954120 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.952920.954120 and hope to see you in some other video 955800 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.954120.955800 on some other topic 958139 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.955800.958139 thank you 960860 -uhcLoVIjC8.CgNhc3ISAmVuGgA%3D.958139.960860 No results found TAP TO RETRY English (auto-generated) CgstdWhjTG9WSWpDOBISQ2dOaGMzSVNBbVZ1R2dBJTNEGAEqM2VuZ2FnZW1lbnQtcGFuZWwtc2VhcmNoYWJsZS10cmFuc2NyaXB0LXNlYXJjaC1wYW5lbDAAOAFAAA%3D%3D CAUQxqYCIhMIhYDf_KHRkwMVp0Y4BR3tqBNyygEEBIT-5A== Search in video CLOSE COUCEKvaByITCIWA3_yh0ZMDFadGOAUd7agTcsoBBASE_uQ= engagement-panel-searchable-transcript-search-panel",
+      "transcript_language": "en",
+      "transcript_segment_count": 3253,
+      "comments_count": 0,
+      "comments_text": "",
+      "title": "Use SQLite Studio and its SQL Editor",
+      "author": "Networking Newbies",
+      "description": "How to use SQLite Studio to create database, to create table and then how to add columns and to add data is shown. Later the use of its SQL Editor is also shown in this video.\n\nhttps://sqlitestudio.pl/\nhttps://www.sqlite.org/index.htm\n\n#sqlite3 \n#SQLiteStudio",
+      "publish_date": "2022-11-12T04:51:50Z",
+      "views": 28900,
+      "length_seconds": 962,
+      "thumbnail_url": "https://i.ytimg.com/vi/-uhcLoVIjC8/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=-uhcLoVIjC8",
+        "page_title": "Use SQLite Studio and its SQL Editor - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 0:35\nUse SQLite Studio and its SQL Editor\nNetworking Newbies\n13.2K subscribers\nSubscribe\n255\nShare\nSave\n28K views  3 years ago  #sqlite3 #SQLiteStudio\nHow to use SQLite Studio to create database, to create ",
+        "ad_debug": {
+          "ad_detected": true,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 6000,
+          "final_ad_state": true
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "youtube_transcript_panel_dom",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 351,
+            "ytd-transcript-search-panel-renderer": 1,
+            "ytd-transcript-segment-list-renderer": 1,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 1
+          },
+          "segment_count": 0,
+          "panel_preview": "Transcript\n0:00\nhi everyone in this video we are going\n0:03\nto use this again SQL Studio\n0:06\nlight studio and in this SQL light\n0:09\nStudio we will be adding some databases\n0:11\nand we will be creating some tables here\n0:13\nso in our previous video we have set up\n0:17\nthis sqlite studio which is actually\n0:20\ngraphical user interface to SQL live\n0:22\ndatabase\n0:24\nand now\n0:26\nI am going to start the sqlite studio\n0:28\nagain here just by double clicking there\n0:31\nand after that we will have the\n0:33\ngraphical user interface of sqlite\n0:36\nstudio in front of us and then the first\n0:38\nstep wi",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 30717,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 200,
+              "body_length": 142873,
+              "normalized_json": true,
+              "parsed_text_length": 30717
+            }
+          ],
+          "attempt_count": 1,
+          "extraction_mode": "panel_network_response"
+        },
+        "comments_debug": {}
+      },
+      "transcript_error": null
+    },
+    {
+      "video_id": "neThJ6xhR80",
+      "video_url": "https://www.youtube.com/watch?v=neThJ6xhR80",
+      "has_transcript": false,
+      "transcript_status": "missing",
+      "analysis_text_source": "metadata_only",
+      "transcript_text": "",
+      "transcript_language": "en",
+      "transcript_segment_count": 0,
+      "comments_count": 0,
+      "comments_text": "",
+      "title": "How to Create SQLite Database using SQLiteStudio",
+      "author": "Butch",
+      "description": "How to Create SQLite Database using SQLiteStudio.",
+      "publish_date": "2021-02-16T01:46:12Z",
+      "views": 19697,
+      "length_seconds": 98,
+      "thumbnail_url": "https://i.ytimg.com/vi/neThJ6xhR80/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=neThJ6xhR80",
+        "page_title": "How to Create SQLite Database using SQLiteStudio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 1:37\nHow to Create SQLite Database using SQLiteStudio\nButch\n2.81K subscribers\nSubscribe\n119\nShare\nSave\n19K views  5 years ago\nHow to Create SQLite Database using SQLiteStudio.聽\n...more\n\nComments are turned ",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 0,
+          "returned_comment_count": 0,
+          "text_length": 0
+        }
+      },
+      "transcript_error": "No caption tracks were exposed in ytInitialPlayerResponse."
+    },
+    {
+      "video_id": "CWF4ohuEwsY",
+      "video_url": "https://www.youtube.com/watch?v=CWF4ohuEwsY",
+      "has_transcript": false,
+      "transcript_status": "missing_comments_fallback",
+      "analysis_text_source": "comments_fallback",
+      "transcript_text": "",
+      "transcript_language": "en",
+      "transcript_segment_count": 0,
+      "comments_count": 5,
+      "comments_text": "Thank you very much. Your students have a great teacher. You made my day.\nbrilliant tutorial on installing SQLiteStudio. The besst tutorial on the internet\nMy Connect & disconnect Icons are greyed out. If I click on the \"Database\" Icon (3rd from left to right), select 1st radio button \"Select and existingdb file\" or select the 2nd radio button,create a new databa\nto the database Chinook. Can you spare some knowledge please. Thanks. DH\nWhere will i get rexon metals db?",
+      "title": "Setting Up SQLiteStudio and Importing a Database",
+      "author": "Fluence Web Design",
+      "description": "This video will show you how to download and set up SQLite Studio and import your first database.",
+      "publish_date": "2021-01-11T08:13:00Z",
+      "views": 18562,
+      "length_seconds": 381,
+      "thumbnail_url": "https://i.ytimg.com/vi/CWF4ohuEwsY/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=CWF4ohuEwsY",
+        "page_title": "Setting Up SQLiteStudio and Importing a Database - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 6:20\nSetting Up SQLiteStudio and Importing a Database\nFluence Web Design\n89 subscribers\nSubscribe\n100\nShare\nSave\n18K views  5 years ago\nThis video will show you how to download and set up SQLite Studio and ",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "transcript_panel_only",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 0,
+            "ytd-transcript-search-panel-renderer": 0,
+            "ytd-transcript-segment-list-renderer": 0,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 1
+          },
+          "segment_count": 0,
+          "panel_preview": "Transcript\n \n \n \n ",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 0,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 400,
+              "body_length": 274,
+              "normalized_json": true,
+              "parsed_text_length": 0,
+              "body_preview": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Precondition check failed.\",\n    \"errors\": [\n      {\n        \"message\": \"Precondition check failed.\",\n        \"domain\": \"global\",\n  "
+            }
+          ],
+          "attempt_count": 1
+        },
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 5,
+          "returned_comment_count": 5,
+          "text_length": 472
+        }
+      },
+      "transcript_error": "Caption tracks exist, but transcript panel extraction has not yielded text yet."
+    },
+    {
+      "video_id": "K7T0zUlWBY8",
+      "video_url": "https://www.youtube.com/watch?v=K7T0zUlWBY8",
+      "has_transcript": true,
+      "transcript_status": "verified",
+      "analysis_text_source": "transcript",
+      "transcript_text": "0 25000 Intro [Music] 4530 6640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.4530.6640 welcome to this data craftsman's guild 8720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.6640.8720 tutorial 9440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.8720.9440 on sqlite studio features 12799 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.9440.12799 we're going to be going over the main 14080 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.12799.14080 tools and features within sqlite 16320 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.14080.16320 that help you as a data professional to 18560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.16320.18560 do your work more efficiently 21199 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.18560.21199 so we're going to go ahead and start by 22560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.21199.22560 opening up sqlite studio 26080 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.22560.26080 67000 Opening Sqlite Studio and you can see that as we do so we have 26640 28240 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.26640.28240 our two databases 30240 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.28240.30240 that you've probably seen in some of our 31679 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.30240.31679 other videos here in our main 34640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.31679.34640 page okay so the first thing that i want 38879 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.34640.38879 to point out 39600 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.38879.39600 is there's tabs and then there's this 41760 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.39600.41760 icon bar 42879 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.41760.42879 up at the top now you can move this icon 46079 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.42879.46079 bar around there's a few different ones 48879 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.46079.48879 that are connected together 50480 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.48879.50480 and you can kind of put those where you 51760 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.50480.51760 want and make it customizable 55198 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.51760.55198 these tabs contain most of the things 55360 57360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.55360.57360 that are in the icon bar 59520 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.57360.59520 with the exception of this view tab 61440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.59520.61440 where you can change 62960 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.61440.62960 the look of the sqlite studio 66960 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.62960.66960 so with that being said we're going to 69119 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.66960.69119 152000 Database Tab go over just the main tools 71040 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.69119.71040 so first thing is this database tab 74320 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.71040.74320 here you can see that these are kind of 75920 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.74320.75920 grouped together 77360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.75920.77360 and this basically functions as a way to 81280 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.77360.81280 add and remove databases into this space 83920 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.81280.83920 here 85119 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.83920.85119 so you know we have our add database 88320 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.85119.88320 icon here an edit database feature and 90880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.88320.90880 then a removal 92079 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.90880.92079 and then you can also connect and 94640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.92079.94640 disconnect 96000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.94640.96000 from a database so you can kind of see 98640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.96000.98640 how that works here with 100159 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.98640.100159 disconnecting connecting 103280 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.100159.103280 and then if i wanted to edit this one i 104960 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.103280.104960 can change where the file is located 108000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.104960.108000 sometimes if the database file needs to 110479 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.108000.110479 move somewhere else 112159 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.110479.112159 you'll need to reconnect it here and 115600 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.112159.115600 move it over now you can see that this 118159 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.115600.118159 says permanent 119119 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.118159.119119 keep in configuration that's just 121280 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.119119.121280 basically saying that it's going to stay 122960 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.121280.122960 here in this list 124399 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.122960.124399 so as a matter of you know 127520 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.124399.127520 editing the database there's that option 129840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.127520.129840 and then also 130959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.129840.130959 being able to remove a database if you 133040 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.130959.133040 need to 134879 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.133040.134879 now sometimes databases generally 138160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.134879.138160 sqlite databases will refresh on their 140319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.138160.140319 own but 141599 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.140319.141599 if they don't you can always come up 143520 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.141599.143520 here and refresh it to make sure you 145440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.143520.145440 have the most 146080 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.145440.146080 up-to-date data in the cases where you 148720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.146080.148720 might be uncertain if it has 150400 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.148720.150400 updated or not now obviously within a 153599 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.150400.153599 245000 Tables database we have tables 155360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.153599.155360 and if you click into one of these 157680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.155360.157680 databases 158640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.157680.158640 you'll see this option for creating a 160720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.158640.160720 new table 162080 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.160720.162080 and you can explore this on your own but 164319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.162080.164319 if you wanted to create a new table you 165680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.164319.165680 just click on that 167120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.165680.167120 you can see that there are new icons 168800 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.167120.168800 within here that you can click on 171120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.168800.171120 you can move which columns go where 174239 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.171120.174239 and then as you add a column you can set 176000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.174239.176000 primary keys foreign keys 178480 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.176000.178480 the data type and so on and so forth 183040 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.178480.183040 um i'm gonna end up not creating this 185840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.183040.185840 table 186319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.185840.186319 so let me just remove this here and 189120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.186319.189120 click close anyway 190959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.189120.190959 and we'll move on to some of the other 192560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.190959.192560 features that we have 194319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.192560.194319 if i click on album you'll notice that 196720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.194319.196720 even more 197840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.196720.197840 icons pop up there's the edit table and 201360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.197840.201360 delete table 202720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.201360.202720 options as well as this new one here 205440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.202720.205440 that we haven't seen 207440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.205440.207440 and it is an index creation 211200 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.207440.211200 so indexes effectively function to make 214799 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.211200.214799 your queries faster 216400 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.214799.216400 they make it so that it can find the 219680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.216400.219680 data 220080 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.219680.220080 quicker now some some of these may have 223360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.220080.223360 an index already 224640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.223360.224640 for example the customers column 228000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.224640.228000 has an index on the customer support 231920 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.228000.231920 rep id so if i wanted to 235680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.231920.235680 now you see i clicked on that i can edit 237760 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.235680.237760 this index 239120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.237760.239120 or delete it we want to keep it because 241519 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.239120.241519 it makes our sql queries 242959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.241519.242959 faster now there are some more options 246720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.242959.246720 297000 Triggers 247280 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.246720.247280 there's a create trigger function and a 250319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.247280.250319 trigger basically 251840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.250319.251840 acts as a way to initialize an event 257120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.251840.257120 before or after another event occurs 260320 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.257120.260320 within your database 262079 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.260320.262079 so if i insert a new row of data into 265520 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.262079.265520 my customer column i can have it trigger 269120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.265520.269120 another action either within that table 272160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.269120.272160 or within another table so they can be 274479 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.272160.274479 very powerful 275919 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.274479.275919 in creating an automated database that 278720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.275919.278720 updates 279840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.278720.279840 different tables based on other table 284160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.279840.284160 other tables that have been updated so 286560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.284160.286560 very powerful tool 288240 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.286560.288240 again you can edit or delete the trigger 292720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.288240.292720 and those are those are some good 294320 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.292720.294320 options there for managing your database 298000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.294320.298000 448000 Views another great tool is adding a view to 300560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.298000.300560 your database 301919 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.300560.301919 now a view is basically a sql query 305919 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.301919.305919 that you save in your database it's very 308800 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.305919.308800 effective for if you need to create 310320 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.308800.310320 reports 311840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.310320.311840 um let's say that on this invoice 315039 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.311840.315039 table why don't we go ahead and just 316320 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.315039.316320 pull up a query 318160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.316320.318160 and you can see there's if we query it 321840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.318160.321840 here there's a total 323280 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.321840.323280 dollar amount if you wanted to sum 325710 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.323280.325710 327199 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.325710.327199 everything where the customer id was to 331120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.327199.331120 then you could do that writing a sql 333120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.331120.333120 query and then you can also save it here 335520 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.333120.335520 as a view 336400 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.335520.336400 and you can see actually right here 337840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.336400.337840 within this 339840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.337840.339840 query you can say quick create this view 343039 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.339840.343039 based on what i've put in here so 346400 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.343039.346400 very powerful and effective way to 348560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.346400.348560 create reports 349759 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.348560.349759 that are automatically updated and 353199 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.349759.353199 just very powerful tool there let's go 356000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.353199.356000 ahead and close this 358800 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.356000.358800 this basically just opens up a sql 359680 361840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.359680.361840 editor window 362720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.361840.362720 that is blank it allows you to write 366000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.362720.366000 your own syntax and i mean you can say 369520 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.366000.369520 select all from 371440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.369520.371440 whatever table you want to use 374560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.371440.374560 so that that's a useful feature if you 376639 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.374560.376639 want to add another 378560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.376639.378560 query if you want to create your own sql 381680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.378560.381680 query 384000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.381680.384000 and then this one is also very effective 384319 386400 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.384319.386400 and this one is 387840 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.386400.387840 the ddl history ddl 391039 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.387840.391039 stands for data definition language and 394080 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.391039.394080 it essentially 396319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.394080.396319 represents how the database is 398639 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.396319.398639 structured 399759 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.398639.399759 so if you click into here you can see 402319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.399759.402319 some of the changes that were made to 403680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.402319.403680 the database 405600 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.403680.405600 there says that there have been 10 and 407520 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.405600.407520 the last execution was on the 6th of 410080 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.407520.410080 november 411360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.410080.411360 so and that last one here was this drop 414319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.411360.414319 trigger 415199 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.414319.415199 this is a good way to version control 417680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.415199.417680 419440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.417680.419440 if you dropped a trigger and you want to 422880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.419440.422880 recreate that trigger you can always 424400 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.422880.424400 come back 425360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.424400.425360 and pull this up and copy it and then 428479 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.425360.428479 paste it over into a 429919 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.428479.429919 sql editor window where you can run it 433440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.429919.433440 and recreate those triggers or whatever 436960 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.433440.436960 else that you are 438639 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.436960.438639 creating within your database so it's a 440880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.438639.440880 442560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.440880.442560 for those functions 445919 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.442560.445919 i'm going to close this here 449039 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.445919.449039 711000 Import okay we're going to jump over here to 450720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.449039.450720 the import 452319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.450720.452319 window icon i should say icon 458240 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.452319.458240 and import is a very powerful function 458319 461199 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.458319.461199 as well 462319 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.461199.462319 we can basically add any 465440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.462319.465440 csv file to our tables 468960 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.465440.468960 and we can have our our choice of which 470879 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.468960.470879 table we want to add it to 473199 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.470879.473199 and then there are other data source 475759 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.473199.475759 types that you can import 477199 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.475759.477199 so very powerful tool you essentially 480240 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.477199.480240 just find the file 482400 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.480240.482400 i don't have one to import right now but 484080 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.482400.484080 you would find it there 485599 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.484080.485599 and then you do have a few other options 488000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.485599.488000 to 489039 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.488000.489039 ignore errors and this is an important 492879 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.489039.492879 one 493440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.492879.493440 the first line of the csv represents 495680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.493440.495680 column names 497039 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.495680.497039 so depending on the file you get you may 498800 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.497039.498800 or may not have a column name 501280 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.498800.501280 if you do it would be wise to check that 504400 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.501280.504400 you also have this option down here to 507199 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.504400.507199 fill the null values with 509039 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.507199.509039 a certain value um but i don't know of a 513039 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.509039.513039 circumstance where you'd want to do that 515518 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.513039.515518 off the top of my head so once you do 515519 518959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.515519.518959 all that you just come down in here and 520399 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.518959.520399 click finish and it would import that 521919 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.520399.521919 data into 522800 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.521919.522800 whatever table you selected 526399 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.522800.526399 export is also a very good function it 526480 529200 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.526480.529200 allows you to do three things 530720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.529200.530720 you can either export the entire 532839 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.530720.532839 database 534399 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.532839.534399 a single table or a query result 537839 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.534399.537839 so when you export a database you can 540640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.537839.540640 either 541360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.540640.541360 export just the structure of the 542800 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.541360.542800 database or you can export the structure 545760 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.542800.545760 and the 549519 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.545760.549519 the data as well as long as you come 551360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.549519.551360 down here and select that label 554880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.551360.554880 so again you just kind of follow this 555519 558640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.555519.558640 format here if you were to do this i 561120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.558640.561120 would recommend doing 562000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.561120.562000 it in a sql file so that when you 566320 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.562000.566320 when you go to save your file you can 568399 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.566320.568399 run it and import it into 570480 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.568399.570480 another sqlite database 573839 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.570480.573839 there's some other options here generate 575920 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.573839.575920 drop ifs 576959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.575920.576959 this is important if you have a database 578959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.576959.578959 that may already exist and you want to 580959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.578959.580959 just completely 582160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.580959.582160 replace it and again you would just hit 584880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.582160.584880 finish 585760 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.584880.585760 so that's the option for the data the 588880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.585760.588880 database there is the single table 590720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.588880.590720 option and the query results 592880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.590720.592880 um i would i would probably show you 595600 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.592880.595600 this one next the query results 597760 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.595600.597760 you essentially just copy and paste your 600240 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.597760.600240 sql query in here 602160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.600240.602160 and then it will export it as 605680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.602160.605680 a a queried result which is nice 610720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.605680.610720 so you can kind of experiment with that 612160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.610720.612160 if you want i won't go any further into 614640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.612160.614640 detail on it 616959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.614640.616959 the final thing that we can look at is 618880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.616959.618880 our configuration dialog 620959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.618880.620959 box there are a number of options that 623680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.620959.623680 you can 624640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.623680.624640 look through here there's some general 627120 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.624640.627120 configuration information 629279 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.627120.629279 there's some keyboard shortcuts if you 630959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.629279.630959 want to alter those 633440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.630959.633440 or even just come and learn what they 635360 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.633440.635360 are this is a good 636640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.635360.636640 reference to to look up here 639760 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.636640.639760 you can change the look and feel the 642640 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.639760.642640 language 643920 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.642640.643920 and kind of how it's laid out 647440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.643920.647440 you can choose how the database list 649839 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.647440.649839 over here 650880 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.649839.650880 is configured 653680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.650880.653680 you can also come over here to data 655120 657040 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.655120.657040 browsing and you can see some of those 659040 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.657040.659040 options there as well there's also 660959 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.659040.660959 these data editors so you can kind of 664160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.660959.664160 see here if you wanted to add an image 668560 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.664160.668560 kind of editor that allows you to see 670240 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.668560.670240 images if those are stored in your 671680 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.670240.671680 672399 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.671680.672399 that's a pretty handy feature i'm 674240 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.672399.674240 actually going to apply that because i 675519 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.674240.675519 like that feature 677200 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.675519.677200 and then plugins for 680720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.677200.680720 sql and you can also import your own 684720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.680720.684720 as well okay so that's 688720 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.684720.688720 pretty much all of the icons up here 691839 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.688720.691839 and that's basically an overview of a 694000 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.691839.694000 lot of the features that are in sqlite 696480 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.694000.696480 if you enjoyed this video and want to 698160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.696480.698160 learn more about sqlite 699760 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.698160.699760 you can check out some of our other 701200 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.699760.701200 videos and if you 703040 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.701200.703040 would like you can subscribe and get 705040 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.703040.705040 more of our 706160 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.705040.706160 our channel videos uh thank you and 709440 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.706160.709440 we'll hope to see you at the next video 713600 K7T0zUlWBY8.CgNhc3ISAmVuGgA%3D.709440.713600 No results found TAP TO RETRY English (auto-generated) CgtLN1QwelVsV0JZOBISQ2dOaGMzSVNBbVZ1R2dBJTNEGAEqM2VuZ2FnZW1lbnQtcGFuZWwtc2VhcmNoYWJsZS10cmFuc2NyaXB0LXNlYXJjaC1wYW5lbDAAOAFAAA%3D%3D CAUQxqYCIhMI6dHkkKLRkwMVyEA4BR2MtQPSygEEBIT-5A== Search in video CLOSE CLgCEKvaByITCOnR5JCi0ZMDFchAOAUdjLUD0soBBASE_uQ= engagement-panel-searchable-transcript-search-panel",
+      "transcript_language": "en",
+      "transcript_segment_count": 2425,
+      "comments_count": 0,
+      "comments_text": "",
+      "title": "Sqlite Studio Features",
+      "author": "SQL Pro",
+      "description": "Learn about the Features of SQLite Studio and how you can manage your databases using this GUI.\n\nSubscribe for more tips and how to videos here: https://www.youtube.com/channel/UCbfcR3OcQwgHvUT9skblhSA/?sub_confirmation=1",
+      "publish_date": "2020-11-12T15:00:05Z",
+      "views": 6907,
+      "length_seconds": 712,
+      "thumbnail_url": "https://i.ytimg.com/vi/K7T0zUlWBY8/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=K7T0zUlWBY8",
+        "page_title": "Sqlite Studio Features - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 11:51\nIntro\nSqlite Studio Features\nSQL Pro\n481 subscribers\nSubscribe\n67\nShare\nSave\n6.9K views  5 years ago\nLearn about the Features of SQLite Studio and how you can manage your databases using this GUI.\n\nSu",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "youtube_transcript_panel_dom",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 612,
+            "ytd-transcript-search-panel-renderer": 2,
+            "ytd-transcript-segment-list-renderer": 2,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 2
+          },
+          "segment_count": 0,
+          "panel_preview": "In this video\nChapters\nTranscript\nIntro\n0:04\n[Music]\n0:06\nwelcome to this data craftsman's guild\n0:08\ntutorial\n0:09\non sqlite studio features\n0:12\nwe're going to be going over the main\n0:14\ntools and features within sqlite\n0:16\nthat help you as a data professional to\n0:18\ndo your work more efficiently\n0:21\nso we're going to go ahead and start by\n0:22\nopening up sqlite studio\nOpening Sqlite Studio\n0:26\nand you can see that as we do so we have\n0:28\nour two databases\n0:30\nthat you've probably seen in some of our\n0:31\nother videos here in our main\n0:34\npage okay so the first thing that i want\n0:38",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 25290,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 200,
+              "body_length": 123531,
+              "normalized_json": true,
+              "parsed_text_length": 25290
+            }
+          ],
+          "attempt_count": 1,
+          "extraction_mode": "panel_network_response"
+        },
+        "comments_debug": {}
+      },
+      "transcript_error": null
+    },
+    {
+      "video_id": "MbpmY_jxU5w",
+      "video_url": "https://www.youtube.com/watch?v=MbpmY_jxU5w",
+      "has_transcript": false,
+      "transcript_status": "missing",
+      "analysis_text_source": "metadata_only",
+      "transcript_text": "",
+      "transcript_language": "en",
+      "transcript_segment_count": 0,
+      "comments_count": 0,
+      "comments_text": "",
+      "title": "How to download & Install SQLiteStudio",
+      "author": "VDS Tech Labs",
+      "description": "https://github.com/pawelsalawa/sqlitestudio/releases\n\nATTACH DATABASE statement to create a new database named and associates it in the current database connection.\nCommand: \n attach database 'C:\\Users\\dell\\Desktop\\Sqlite-Database\\TestDB.db' as techlabs;",
+      "publish_date": "2020-01-02T20:10:21Z",
+      "views": 1111,
+      "length_seconds": 381,
+      "thumbnail_url": "https://i.ytimg.com/vi/MbpmY_jxU5w/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=MbpmY_jxU5w",
+        "page_title": "How to download & Install SQLiteStudio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 6:20\nHow to download & Install SQLiteStudio\nVDS Tech Labs\n520 subscribers\nSubscribe\n12\nShare\nSave\n1.1K views  6 years ago\nhttps://github.com/pawelsalawa/sqlite...\n\nATTACH DATABASE statement to create a new ",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 0,
+          "returned_comment_count": 0,
+          "text_length": 0
+        }
+      },
+      "transcript_error": "No caption tracks were exposed in ytInitialPlayerResponse."
+    },
+    {
+      "video_id": "8-02YRvKBOs",
+      "video_url": "https://www.youtube.com/watch?v=8-02YRvKBOs",
+      "has_transcript": false,
+      "transcript_status": "missing_comments_fallback",
+      "analysis_text_source": "comments_fallback",
+      "transcript_text": "",
+      "transcript_language": "en",
+      "transcript_segment_count": 0,
+      "comments_count": 3,
+      "comments_text": "Sorted. I found that SQLiteStudio needs to export the sql as a file then I can import it into a sqlcipher db, and the problem I alluded to below no longer exists. The problem was created by drag an drop in SQLiteStudio into the SQLCipher. All sorted now. SQLCipher works as per you video. thanks Sam\nSergey thank you very much. It helped me a lot. But I do have a question. I installed sqlcipher on my linuxmint machine. I then created a sqlcipher db with a PRAGMA password. I checked it was encypted with hexdump. I then opened SQLStudio and it opened the sqlcipher db without any password! I was able to see the table and read the data! I thought having the PRAGMA key would stop an application from opening it unless I supplied the PRAGMA key. Clearly theres something else I don't know. I really want to stop people from opening my sqlite db without a password. Any suggestions? thanks in advance Sam\nHi, thanks for the great app! But where can I get this plugin? Seems the default app package doesn't contain it.",
+      "title": "SQLCipher plugin for SQLiteStudio",
+      "author": "SQLiteStudio",
+      "description": "A short features presentation of SQLCipher plugin for SQLiteStudio 3.x.x.\n\nSQLiteStudio homepage: http://sqlitestudio.pl\n\nThe music in background is Sevenhundredbeats by Duncan Beattie - http://dig.ccmixter.org/files/duncan_beattie/7116 - shared on Creative Commons license",
+      "publish_date": "2015-04-23T20:11:00Z",
+      "views": 7636,
+      "length_seconds": 106,
+      "thumbnail_url": "https://i.ytimg.com/vi/8-02YRvKBOs/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=8-02YRvKBOs",
+        "page_title": "SQLCipher plugin for SQLiteStudio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 1:45\nSQLCipher plugin for SQLiteStudio\nSQLiteStudio\n21 subscribers\nSubscribe\n14\nShare\nSave\n7.6K views  10 years ago\nA short features presentation of SQLCipher plugin for SQLiteStudio 3.x.x.\n\nSQLiteStudio ho",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 3,
+          "returned_comment_count": 3,
+          "text_length": 1017
+        }
+      },
+      "transcript_error": "No caption tracks were exposed in ytInitialPlayerResponse."
+    },
+    {
+      "video_id": "2HRwZwiP67Y",
+      "video_url": "https://www.youtube.com/watch?v=2HRwZwiP67Y",
+      "has_transcript": false,
+      "transcript_status": "missing_comments_fallback",
+      "analysis_text_source": "comments_fallback",
+      "transcript_text": "",
+      "transcript_language": "en",
+      "transcript_segment_count": 0,
+      "comments_count": 5,
+      "comments_text": "This tutorial is great My right ear loves this but my left hates it\nThank you so much! I was very nervous as every tutorial started off with a different interface (query/history one) whereas mine began with that grey square, I didn't know where to go off from thereon. Again, thank you!\nThank you very much for explaning this. Much appreciated\nvery helpful.. thanks\nThanks",
+      "title": "How to use SQLite Studio",
+      "author": "programming ABC",
+      "description": "Programming is my hobby.  Here Visual Basic .net ,  Netbeans Java, JavaFX, FXML , Delphi-7 , Python & C++ programming Video Will be Uploaded.....\r\nPlease Visite My Blog for Code :   easyprogramming1990.blogspot.com\r\n\r##SQLite_Studio\n##Like & \r\n##Subscribe my Channel for more video",
+      "publish_date": "2020-11-18T16:42:49Z",
+      "views": 32119,
+      "length_seconds": 471,
+      "thumbnail_url": "https://i.ytimg.com/vi/2HRwZwiP67Y/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=2HRwZwiP67Y",
+        "page_title": "How to use SQLite Studio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 7:50\nHow to use SQLite Studio\nprogramming ABC\n6.47K subscribers\nSubscribe\n222\nShare\nSave\n32K views  5 years ago  #Subscribe #Like\nProgramming is my hobby.  Here Visual Basic .net ,  Netbeans Java, JavaFX, F",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "transcript_panel_only",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 0,
+            "ytd-transcript-search-panel-renderer": 0,
+            "ytd-transcript-segment-list-renderer": 0,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 1
+          },
+          "segment_count": 0,
+          "panel_preview": "Transcript\n \n \n \n ",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 0,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 400,
+              "body_length": 274,
+              "normalized_json": true,
+              "parsed_text_length": 0,
+              "body_preview": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Precondition check failed.\",\n    \"errors\": [\n      {\n        \"message\": \"Precondition check failed.\",\n        \"domain\": \"global\",\n  "
+            }
+          ],
+          "attempt_count": 1
+        },
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 5,
+          "returned_comment_count": 5,
+          "text_length": 372
+        }
+      },
+      "transcript_error": "Caption tracks exist, but transcript panel extraction has not yielded text yet."
+    },
+    {
+      "video_id": "j71c9XW3JRQ",
+      "video_url": "https://www.youtube.com/watch?v=j71c9XW3JRQ",
+      "has_transcript": false,
+      "transcript_status": "missing",
+      "analysis_text_source": "metadata_only",
+      "transcript_text": "",
+      "transcript_language": "en",
+      "transcript_segment_count": 0,
+      "comments_count": 0,
+      "comments_text": "",
+      "title": "How to create the database using SqLite Studio",
+      "author": "Ratna",
+      "description": "Hello Friends Wellcome to my channel \nRTechGyan.....\n\n\n\n\n\n\n\nToday I am Prasent  ....\nHow to Create the Database Using Sqlite Studio\n\n\n\n\n\n\n\nPlease click on the bell Icon\nAnd Subscribe and share my Channel..\n\n\n\n\n\n\n\nSo lets start the Create the Database\n\n\n\n\n\n\nFirst  Click on the Add Database\nclick on the + button------\nchoose the location Give the name to the folder \n&Save the batabse file\n\ndouble click on the Demo1 \nRigth click on the create table -----\nGive the name of the table is Test---\nAdd the column 1 is Id----\ncolumn 2 is a Name ----\ncolumn 3 is a Age \nclick on the Rigth button & Save the Data \n\n\nAfter that you can Add the Row \nrow 1--------1   Ritu   19\nrow 2---------2 Isha   20\nrow 3-------3 sushil 25\n\nnow click on the rigth button & save the \ndata into database\n\nyou can delete the data and rollback the data ....\n\n\n\n\n\n\n\n\nThank you for Watching my Video...\n\nSee you soon With My Next Video RTechGyan..... with my new video....\n\n\n\n\nBy By Friend.....",
+      "publish_date": "2020-06-09T15:36:19Z",
+      "views": 3240,
+      "length_seconds": 341,
+      "thumbnail_url": "https://i.ytimg.com/vi/j71c9XW3JRQ/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=j71c9XW3JRQ",
+        "page_title": "How to create the database using SqLite Studio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 5:40\nHow to create the database using SqLite Studio\nRatna\n18 subscribers\nSubscribe\n46\nShare\nSave\n3.2K views  5 years ago\nHello Friends Wellcome to my channel \nRTechGyan.....聽鈥n...more\n\nChoices for families\n",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 0,
+          "returned_comment_count": 0,
+          "text_length": 0
+        }
+      },
+      "transcript_error": "No caption tracks were exposed in ytInitialPlayerResponse."
+    },
+    {
+      "video_id": "6h1UdrOx7U0",
+      "video_url": "https://www.youtube.com/watch?v=6h1UdrOx7U0",
+      "has_transcript": true,
+      "transcript_status": "verified",
+      "analysis_text_source": "transcript",
+      "transcript_text": "Hello guys, welcome back to my YouTube 80 1839 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.80.1839 channel Rishy Labs. In today's video, we 4160 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.1839.4160 will see how to download and install 6319 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.4160.6319 Escalite Studio on Windows 11. So, let's 9440 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.6319.9440 get started. For this, you'll require a 11440 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.9440.11440 web browser. I'll make use of Google 13120 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.11440.13120 Chrome. In the search bar, you need to 15200 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.13120.15200 type skulite 18560 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.15200.18560 studio 20720 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.18560.20720 download and press enter. 23199 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.20720.23199 So, you will get the first official link 24880 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.23199.24880 that is escalite studio. Click on it. 28240 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.24880.28240 So this is the official page from where 29920 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.28240.29920 you can download escalite studio. Click 31679 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.29920.31679 on download. This will download the 33520 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.31679.33520 setup file for Windows. So escalate 35840 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.33520.35840 studio is basically a software which 37680 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.35840.37680 helps you to create escalite databases. 40480 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.37680.40480 You can edit existing database and you 42960 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.40480.42960 can browse escalate database. So file 45200 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.42960.45200 setup has got downloaded. I'll click on 46960 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.45200.46960 open. You will get a pop-up. Select yes. 50079 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.46960.50079 Let me minimize the web browser. 52800 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.50079.52800 So click on next. 55680 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.52800.55680 I accept the agreement. Next. 59359 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.55680.59359 Keep it selected as a yes. Click on 61359 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.59359.61359 next. This is the installation directory 64080 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.61359.64080 where the software will get installed. 65760 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.64080.65760 If you want, you can change it. I'll go 67360 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.65760.67360 with the default one. Click on next. 69520 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.67360.69520 Then click on next. 71920 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.69520.71920 And now setup is getting installed. 73439 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.71920.73439 Within few seconds, it will get 74799 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.73439.74799 installed. 77799 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.74799.77799 I'll click on finish. This will launch 78159 79840 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.78159.79840 the SQLite studio. You can select the 82240 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.79840.82240 language. I'll go with the default one. 84240 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.82240.84240 Click on okay. 87200 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.84240.87200 So this is how the interface of the 88640 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.87200.88640 escalate studio looks. I'll come up with 90400 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.88640.90400 a separate video in which we can see how 93119 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.90400.93119 to use how to create a database how to 95520 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.93119.95520 use all these options. 98640 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.95520.98640 So that's all for today guys. Do 100799 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.98640.100799 subscribe to my YouTube channel Rishi 102320 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.100799.102320 Labs. Thanks for watching. 106360 6h1UdrOx7U0.CgNhc3ISAmVuGgA%3D.102320.106360 No results found TAP TO RETRY English (auto-generated) Cgs2aDFVZHJPeDdVMBISQ2dOaGMzSVNBbVZ1R2dBJTNEGAEqM2VuZ2FnZW1lbnQtcGFuZWwtc2VhcmNoYWJsZS10cmFuc2NyaXB0LXNlYXJjaC1wYW5lbDAAOAFAAA%3D%3D CAUQxqYCIhMIg-WWr6LRkwMVv2B4AB053y_iygEEBIT-5A== Search in video CLOSE CDQQq9oHIhMIg-WWr6LRkwMVv2B4AB053y_iygEEBIT-5A== engagement-panel-searchable-transcript-search-panel",
+      "transcript_language": "en",
+      "transcript_segment_count": 394,
+      "comments_count": 0,
+      "comments_text": "",
+      "title": "How to install SQLite Studio on Windows 11",
+      "author": "Rishi Labs",
+      "description": "SQLite Studio Download Link: https://sqlitestudio.pl\n\nLearn how to download and install SQLiteStudio on your Windows 11 PC in this step-by-step video tutorial. SQLiteStudio is a free, open-source, and lightweight SQLite database manager with a powerful interface. Perfect for developers, students, and data enthusiasts!\n\n馃摵 Subscribe to Rishi Labs for more tech tutorials:\n馃敆 https://youtube.com/@RishiLabs\n\n#SQLiteStudio #SQLite #Windows11 #RishiLabs #DatabaseTutorial #SQL #InstallSQLite",
+      "publish_date": "2025-07-18T04:05:23Z",
+      "views": 809,
+      "length_seconds": 107,
+      "thumbnail_url": "https://i.ytimg.com/vi/6h1UdrOx7U0/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=6h1UdrOx7U0",
+        "page_title": "How to install SQLite Studio on Windows 11 - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 1:46\nHow to install SQLite Studio on Windows 11\nTechBuddy\n618 subscribers\nSubscribe\n12\nShare\nSave\n809 views  8 months ago  #SQL #Windows11 #SQLiteStudio\nSQLite Studio Download Link: https://sqlitestudio.pl\n",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "youtube_transcript_panel_dom",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 46,
+            "ytd-transcript-search-panel-renderer": 1,
+            "ytd-transcript-segment-list-renderer": 1,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 1
+          },
+          "segment_count": 0,
+          "panel_preview": "Transcript\n0:00\nHello guys, welcome back to my YouTube\n0:01\nchannel Rishy Labs. In today's video, we\n0:04\nwill see how to download and install\n0:06\nEscalite Studio on Windows 11. So, let's\n0:09\nget started. For this, you'll require a\n0:11\nweb browser. I'll make use of Google\n0:13\nChrome. In the search bar, you need to\n0:15\ntype skulite\n0:18\nstudio\n0:20\ndownload and press enter.\n0:23\nSo, you will get the first official link\n0:24\nthat is escalite studio. Click on it.\n0:28\nSo this is the official page from where\n0:29\nyou can download escalite studio. Click\n0:31\non download. This will download the",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 4184,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 200,
+              "body_length": 20873,
+              "normalized_json": true,
+              "parsed_text_length": 4184
+            }
+          ],
+          "attempt_count": 1,
+          "extraction_mode": "panel_network_response"
+        },
+        "comments_debug": {}
+      },
+      "transcript_error": null
+    },
+    {
+      "video_id": "gWEgDt5uCsc",
+      "video_url": "https://www.youtube.com/watch?v=gWEgDt5uCsc",
+      "has_transcript": true,
+      "transcript_status": "verified",
+      "analysis_text_source": "transcript",
+      "transcript_text": "hey how's it going hey um I just wanted 5400 7799 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.5400.7799 to show you this tool if you're looking 10719 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.7799.10719 more for a some sort of uh gooey 14879 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.10719.14879 application to interact with your 16720 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.14879.16720 database um this one looks like it's 19160 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.16720.19160 free but still pretty um pretty powerful 23720 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.19160.23720 in a sense that you can look at your 25240 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.23720.25240 your database your tables run SQL 27199 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.25240.27199 queries all that kind of stuff so um 30480 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.27199.30480 yeah if you go to sqlite studio. PL go 34840 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.30480.34840 ahead and copy that you can push pause 36559 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.34840.36559 and copy that down and go to that 38440 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.36559.38440 website and then download it it's 41320 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.38440.41320 crossplatform so it'll run on both Mac 43200 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.41320.43200 and windows so once you get it 45399 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.43200.45399 downloaded you can install it on your 47840 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.45399.47840 computer and then when you get it 49640 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.47840.49640 installed on your computer it should 52199 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.49640.52199 look uh something like like this and 56920 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.52199.56920 what you want to do since SQL light is 60000 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.56920.60000 file based we just need to go find the 62920 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.60000.62920 file the D the sqlite database file that 66040 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.62920.66040 was generated in our uh Layel 69200 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.66040.69200 application so um I've been working on a 72360 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.69200.72360 friend's application that I've been 73920 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.72360.73920 demonstrating in the lectures so let's 76240 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.73920.76240 go ahead and find where that is so I'm 78439 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.76240.78439 going to go over here add a database hit 82520 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.78439.82520 I'm going to hit this icon 84360 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.82520.84360 here and it wants to know the file so 88040 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.84360.88040 where is this file so so I'm going to go 90320 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.88040.90320 hit the browse 92079 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.90320.92079 button and what you'll need to do then 95680 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.92079.95680 is navigate to your application 99720 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.95680.99720 so wherever your stuff is stored right 102720 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.99720.102720 so in my in my case I have Carmen Blake 105920 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.102720.105920 is my home folder then I have courses 108600 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.105920.108600 233 spring 2024 my friend's app lecture 112439 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.108600.112439 that I've been uh writing and then 115320 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.112439.115320 inside the layer Bell you just go to the 117560 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.115320.117560 uh database folder and then there is 120479 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.117560.120479 your database. sqlite file all right so 124479 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.120479.124479 you make sure you just select that file 127119 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.124479.127119 and then select it and I can give it a 130000 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.127119.130000 name here uh maybe something more 132400 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.130000.132400 meaningful friends 134840 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.132400.134840 database and then I should be able to I 137640 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.134840.137640 could test it gives me a green light 140879 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.137640.140879 there and then hit okay and so what that 144120 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.140879.144120 will do is uh point to that database and 146800 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.144120.146800 then if I want to see further into it I 149959 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.146800.149959 can double click on that and I can now 152440 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.149959.152440 look at my tables very cool so I have my 155200 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.152440.155200 friend's table I can double click that 157440 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.155200.157440 and I can see the 158760 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.157440.158760 schema and then if I want to look at the 161519 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.158760.161519 data there's my data and that's the data 164040 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.161519.164040 we've been um interacting with on the 166519 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.164040.166519 website um so if I flip over to 170400 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.166519.170400 that right here right these things match 173879 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.170400.173879 up all right John John John do 177800 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.173879.177800 99 so John do 99 Jane do 98 right so 184560 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.177800.184560 these things are looking at the same 186680 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.184560.186680 data but now we have this gooey tool you 190239 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.186680.190239 know it's up to you if you want to use 191799 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.190239.191799 it or not but it can be handy if you 194000 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.191799.194000 want to get in there and actually um 195680 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.194000.195680 interact with some of this data so for 198120 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.195680.198120 example like hello let's say I want to 200000 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.198120.200000 capitalize 202400 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.200000.202400 H oops I 205040 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.202400.205040 cannot hello and then there 210000 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.205040.210000 um the only thing here is in order to 211640 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.210000.211640 make this commit happen I do need to hit 214480 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.211640.214480 this green check mark up here it says 217360 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.214480.217360 commit so any edits that I've made down 219879 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.217360.219879 here in order for them to take place I 221959 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.219879.221959 actually hit the need to hit this green 223480 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.221959.223480 button check uh mark up here so I'm 226720 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.223480.226720 going to do that 228560 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.226720.228560 now and then go back to the web page to 231720 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.228560.231720 see if it actually happened and it did 235879 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.231720.235879 so hello there letters are in caps so 240040 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.235879.240040 that's looking cool um you 243519 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.240040.243519 can I should have one user in here and 247560 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.243519.247560 that's the Carmen Blake user so that I 250400 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.247560.250400 set that up when I 251959 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.250400.251959 registered um if you wanted to run any 255480 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.251959.255480 like SQL 257000 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.255480.257000 commands um somewhere in here open SQL 260359 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.257000.260359 editor right I could I could select all 264400 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.260359.264400 from 267000 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.264400.267000 friends and run that query here so that 267600 271440 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.267600.271440 looks 272639 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.271440.272639 great 274160 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.272639.274160 um where age is greater than 278400 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.274160.278400 80 I can fine-tune my my query so now 283039 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.278400.283039 you can you know fully functionally 285080 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.283039.285080 interact with your data in this guey 287479 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.285080.287479 tool which is which is pretty nice um so 291120 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.287479.291120 anyway I thought that would be kind of a 292919 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.291120.292919 helpful tip for those who are interested 295440 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.292919.295440 in that all right see you bye 301199 gWEgDt5uCsc.CgNhc3ISAmVuGgA%3D.295440.301199 No results found TAP TO RETRY English (auto-generated) CgtnV0VnRHQ1dUNzYxISQ2dOaGMzSVNBbVZ1R2dBJTNEGAEqM2VuZ2FnZW1lbnQtcGFuZWwtc2VhcmNoYWJsZS10cmFuc2NyaXB0LXNlYXJjaC1wYW5lbDAAOAFAAA%3D%3D CAUQxqYCIhMI-LbOsqLRkwMVS0J4AB18UgcZygEEBIT-5A== Search in video CLOSE CG0Qq9oHIhMI-LbOsqLRkwMVS0J4AB18UgcZygEEBIT-5A== engagement-panel-searchable-transcript-search-panel",
+      "transcript_language": "en",
+      "transcript_segment_count": 975,
+      "comments_count": 0,
+      "comments_text": "",
+      "title": "SQLite Studio",
+      "author": "Karmen Blake",
+      "description": "Quick tour of SQLite Studio",
+      "publish_date": "2024-06-04T23:24:00Z",
+      "views": 89,
+      "length_seconds": 300,
+      "thumbnail_url": "https://i.ytimg.com/vi/gWEgDt5uCsc/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=gWEgDt5uCsc",
+        "page_title": "SQLite Studio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 4:59\nSQLite Studio\nKarmen Blake\n136 subscribers\nSubscribe\n1\nShare\nSave\n89 views  1 year ago\nQuick tour of SQLite Studio聽\n...more\n\n0 Comments\nSort by\nAdd a comment...\n12:35\nDownload SQLite Studio:  SQL 30 Da",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "youtube_transcript_panel_dom",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 103,
+            "ytd-transcript-search-panel-renderer": 1,
+            "ytd-transcript-segment-list-renderer": 1,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 1
+          },
+          "segment_count": 0,
+          "panel_preview": "Transcript\n0:05\nhey how's it going hey um I just wanted\n0:07\nto show you this tool if you're looking\n0:10\nmore for a some sort of uh gooey\n0:14\napplication to interact with your\n0:16\ndatabase um this one looks like it's\n0:19\nfree but still pretty um pretty powerful\n0:23\nin a sense that you can look at your\n0:25\nyour database your tables run SQL\n0:27\nqueries all that kind of stuff so um\n0:30\nyeah if you go to sqlite studio. PL go\n0:34\nahead and copy that you can push pause\n0:36\nand copy that down and go to that\n0:38\nwebsite and then download it it's\n0:41\ncrossplatform so it'll run on both Mac\n0",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 9215,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 200,
+              "body_length": 43703,
+              "normalized_json": true,
+              "parsed_text_length": 9215
+            }
+          ],
+          "attempt_count": 1,
+          "extraction_mode": "panel_network_response"
+        },
+        "comments_debug": {}
+      },
+      "transcript_error": null
+    },
+    {
+      "video_id": "Dt-GXq5t3NQ",
+      "video_url": "https://www.youtube.com/watch?v=Dt-GXq5t3NQ",
+      "has_transcript": false,
+      "transcript_status": "missing_comments_fallback",
+      "analysis_text_source": "comments_fallback",
+      "transcript_text": "",
+      "transcript_language": "en",
+      "transcript_segment_count": 0,
+      "comments_count": 4,
+      "comments_text": "賰賷賮 丕賳夭賱賴 毓賱賶 賳馗丕賲 32 bit\n賲丕 毓賳丿賳丕 亘 (DataTybe) 丕賳賵丕毓 date, date time 責責責責\n賴賱 賷賲賰賳 丕囟丕賮丞 賰賱賲丞 爻乇 賱賯丕毓丿丞 丕賱亘賷丕賳丕鬲 責\n賲賲鬲丕夭",
+      "title": "SQLITE | SQLite Studio {賯賵丕毓丿 亘賷丕賳丕鬲 亘丕賱毓乇亘賶}",
+      "author": "TechPulse Academy ",
+      "description": "Database Management Systems (DBMS) course is divided into two sub-courses: Level 1 and Level 2. In Level 1, you will learn how to QUERING a DBMS to get the data distributed over multiple relations (tables). This level is sufficient for jobs like Data Analysts, Data Scientists, Researchers, and Developers. In Level 2, you will learn all aspects related to designing the database which is useful for jobs like Data Engineers.\n\nPlaylist: https://www.youtube.com/watch?v=Hv2dVnUwKuI&list=PL73bE5x5W-IDErOUNGLYUXFcw2Tan_BAq\nFacebook page: https://www.facebook.com/OLearningO\nFacebook Group: https://www.facebook.com/groups/1296343220550686\n\nThis is Level 1 and here is the syllabus\n---------------------------------------------------------\n1- Introduction to Relational Databases\n2- Relational Algebra (Implementation tool: Relax)\n    |------ Unary Operators (Select - Project - Rename)\n    |------ Binary Operators\n                |------ Set Operators (Intersect - Union - Minus)\n                |------ Join Operators\n                            |------ Inner Join (Theta - Equi - Natural)\n                            |------ Outer Join (Left - Right - Full)\n                |------ Divide By Operator\n   |------ Aggregate Functions and Grouping\n3- Tuple Relational Calculas\n   |------ One variable\n   |------ Two or more variables\n   |------ Quantifiers\n4- DBMSs introduction\n5- SQL  (Implementation tool: SQLite)\n    |------ DDL (Create - Drop - Alter)\n    |------ DML (Insert - Delete - Update - Replace)\n    |------ DQL (Select)\n              |------ Select - From - Where\n              |------ Join\n              |------ Aggregate Functions  and Grouping\n              |------ Sorting rows\n              |------ Set Operators (Intersect - Union - Minus)\n              |------ SubQueries\n              |------ Quantifiers\n              |------ Divide By Implementation\n              |------ Case\n              |------ Exercises\n6- SQLite as an embedded system\n   |------  with Java\n   |------  with Python\n8- SQL Dialect\n9- Postgres as Client-Server model\n   |------  with Java\n   |------  with Python",
+      "publish_date": "2021-08-20T07:03:24Z",
+      "views": 2757,
+      "length_seconds": 526,
+      "thumbnail_url": "https://i.ytimg.com/vi/Dt-GXq5t3NQ/maxresdefault.jpg",
+      "metadata_source": "youtube_videos_api",
+      "metadata_warning": null,
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=Dt-GXq5t3NQ",
+        "page_title": "SQLITE | SQLite Studio {賯賵丕毓丿 亘賷丕賳丕鬲 亘丕賱毓乇亘賶} - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 8:45\nSQLITE | SQLite Studio {賯賵丕毓丿 亘賷丕賳丕鬲 亘丕賱毓乇亘賶}\nTechPulse Academy \n12.5K subscribers\nSubscribe\n41\nShare\nSave\n2.7K views  4 years ago  Database Level 1: Relational Database and Queries\nDatabase Management",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 4,
+          "returned_comment_count": 4,
+          "text_length": 120
+        }
+      },
+      "transcript_error": "No caption tracks were exposed in ytInitialPlayerResponse."
+    }
+  ],
+  "transcript_failures": [
+    {
+      "video_id": "neThJ6xhR80",
+      "title": "How to Create SQLite Database using SQLiteStudio",
+      "author": "Butch",
+      "error": "No caption tracks were exposed in ytInitialPlayerResponse.",
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=neThJ6xhR80",
+        "page_title": "How to Create SQLite Database using SQLiteStudio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 1:37\nHow to Create SQLite Database using SQLiteStudio\nButch\n2.81K subscribers\nSubscribe\n119\nShare\nSave\n19K views  5 years ago\nHow to Create SQLite Database using SQLiteStudio.聽\n...more\n\nComments are turned ",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 0,
+          "returned_comment_count": 0,
+          "text_length": 0
+        }
+      }
+    },
+    {
+      "video_id": "CWF4ohuEwsY",
+      "title": "Setting Up SQLiteStudio and Importing a Database",
+      "author": "Fluence Web Design",
+      "error": "Caption tracks exist, but transcript panel extraction has not yielded text yet.",
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=CWF4ohuEwsY",
+        "page_title": "Setting Up SQLiteStudio and Importing a Database - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 6:20\nSetting Up SQLiteStudio and Importing a Database\nFluence Web Design\n89 subscribers\nSubscribe\n100\nShare\nSave\n18K views  5 years ago\nThis video will show you how to download and set up SQLite Studio and ",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "transcript_panel_only",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 0,
+            "ytd-transcript-search-panel-renderer": 0,
+            "ytd-transcript-segment-list-renderer": 0,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 1
+          },
+          "segment_count": 0,
+          "panel_preview": "Transcript\n \n \n \n ",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 0,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 400,
+              "body_length": 274,
+              "normalized_json": true,
+              "parsed_text_length": 0,
+              "body_preview": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Precondition check failed.\",\n    \"errors\": [\n      {\n        \"message\": \"Precondition check failed.\",\n        \"domain\": \"global\",\n  "
+            }
+          ],
+          "attempt_count": 1
+        },
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 5,
+          "returned_comment_count": 5,
+          "text_length": 472
+        }
+      }
+    },
+    {
+      "video_id": "MbpmY_jxU5w",
+      "title": "How to download & Install SQLiteStudio",
+      "author": "VDS Tech Labs",
+      "error": "No caption tracks were exposed in ytInitialPlayerResponse.",
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=MbpmY_jxU5w",
+        "page_title": "How to download & Install SQLiteStudio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 6:20\nHow to download & Install SQLiteStudio\nVDS Tech Labs\n520 subscribers\nSubscribe\n12\nShare\nSave\n1.1K views  6 years ago\nhttps://github.com/pawelsalawa/sqlite...\n\nATTACH DATABASE statement to create a new ",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 0,
+          "returned_comment_count": 0,
+          "text_length": 0
+        }
+      }
+    },
+    {
+      "video_id": "8-02YRvKBOs",
+      "title": "SQLCipher plugin for SQLiteStudio",
+      "author": "SQLiteStudio",
+      "error": "No caption tracks were exposed in ytInitialPlayerResponse.",
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=8-02YRvKBOs",
+        "page_title": "SQLCipher plugin for SQLiteStudio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 1:45\nSQLCipher plugin for SQLiteStudio\nSQLiteStudio\n21 subscribers\nSubscribe\n14\nShare\nSave\n7.6K views  10 years ago\nA short features presentation of SQLCipher plugin for SQLiteStudio 3.x.x.\n\nSQLiteStudio ho",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 3,
+          "returned_comment_count": 3,
+          "text_length": 1017
+        }
+      }
+    },
+    {
+      "video_id": "2HRwZwiP67Y",
+      "title": "How to use SQLite Studio",
+      "author": "programming ABC",
+      "error": "Caption tracks exist, but transcript panel extraction has not yielded text yet.",
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [
+          "en"
+        ],
+        "player_state_attempts": 1,
+        "caption_track_count": 1,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=2HRwZwiP67Y",
+        "page_title": "How to use SQLite Studio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 7:50\nHow to use SQLite Studio\nprogramming ABC\n6.47K subscribers\nSubscribe\n222\nShare\nSave\n32K views  5 years ago  #Subscribe #Like\nProgramming is my hobby.  Here Visual Basic .net ,  Netbeans Java, JavaFX, F",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": null,
+        "fetch_mode": "transcript_panel_only",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": true,
+        "ui_fallback_opened": true,
+        "ui_debug": {
+          "selector_hits": {
+            "ytd-transcript-segment-renderer": 0,
+            "ytd-transcript-search-panel-renderer": 0,
+            "ytd-transcript-segment-list-renderer": 0,
+            "ytd-engagement-panel-section-list-renderer[target-id='engagement-panel-searchable-transcript']": 1
+          },
+          "segment_count": 0,
+          "panel_preview": "Transcript\n \n \n \n ",
+          "captured_response_count": 1,
+          "api_transcript_text_length": 0,
+          "api_response_debug": [
+            {
+              "url": "https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false",
+              "status": 400,
+              "body_length": 274,
+              "normalized_json": true,
+              "parsed_text_length": 0,
+              "body_preview": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Precondition check failed.\",\n    \"errors\": [\n      {\n        \"message\": \"Precondition check failed.\",\n        \"domain\": \"global\",\n  "
+            }
+          ],
+          "attempt_count": 1
+        },
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 5,
+          "returned_comment_count": 5,
+          "text_length": 372
+        }
+      }
+    },
+    {
+      "video_id": "j71c9XW3JRQ",
+      "title": "How to create the database using SqLite Studio",
+      "author": "Ratna",
+      "error": "No caption tracks were exposed in ytInitialPlayerResponse.",
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=j71c9XW3JRQ",
+        "page_title": "How to create the database using SqLite Studio - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 5:40\nHow to create the database using SqLite Studio\nRatna\n18 subscribers\nSubscribe\n46\nShare\nSave\n3.2K views  5 years ago\nHello Friends Wellcome to my channel \nRTechGyan.....聽鈥n...more\n\nChoices for families\n",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 0,
+          "returned_comment_count": 0,
+          "text_length": 0
+        }
+      }
+    },
+    {
+      "video_id": "Dt-GXq5t3NQ",
+      "title": "SQLITE | SQLite Studio {賯賵丕毓丿 亘賷丕賳丕鬲 亘丕賱毓乇亘賶}",
+      "author": "TechPulse Academy ",
+      "error": "No caption tracks were exposed in ytInitialPlayerResponse.",
+      "transcript_debug": {
+        "selected_language": "en",
+        "available_transcript_languages": [],
+        "player_state_attempts": 4,
+        "caption_track_count": 0,
+        "response_status": null,
+        "requested_caption_urls": [],
+        "final_caption_url": "",
+        "response_text_length": 0,
+        "response_text_preview": "",
+        "player_url": "https://www.youtube.com/watch?v=Dt-GXq5t3NQ",
+        "page_title": "SQLITE | SQLite Studio {賯賵丕毓丿 亘賷丕賳丕鬲 亘丕賱毓乇亘賶} - YouTube",
+        "challenge_excerpt": "HK\nSkip navigation\nSign in\n0:00 / 8:45\nSQLITE | SQLite Studio {賯賵丕毓丿 亘賷丕賳丕鬲 亘丕賱毓乇亘賶}\nTechPulse Academy \n12.5K subscribers\nSubscribe\n41\nShare\nSave\n2.7K views  4 years ago  Database Level 1: Relational Database and Queries\nDatabase Management",
+        "ad_debug": {
+          "ad_detected": false,
+          "skip_clicked": false,
+          "waited_for_ad_ms": 0,
+          "final_ad_state": false
+        },
+        "downgrade_reason": "no_caption_tracks",
+        "fetch_mode": "captionless_early_downgrade",
+        "fetch_attempts": [],
+        "ui_fallback_attempted": false,
+        "ui_fallback_opened": false,
+        "ui_debug": {},
+        "comments_debug": {
+          "selector": "ytd-comment-thread-renderer #content-text",
+          "visible_comment_count": 4,
+          "returned_comment_count": 4,
+          "text_length": 120
+        }
+      }
+    }
+  ],
+  "skipped_videos": [
+    {
+      "video_id": "Vxn0CaWc9ZI",
+      "title": "SQLite vs MySQL: Understanding Database Technology #coding",
+      "video_url": "https://www.youtube.com/watch?v=Vxn0CaWc9ZI",
+      "reason": "shorts_filtered",
+      "length_seconds": 6
+    }
+  ],
+  "coverage": {
+    "total_videos": 12,
+    "transcript_count": 5,
+    "comment_fallback_count": 4,
+    "metadata_only_count": 3,
+    "transcript_coverage_ratio": 0.4167,
+    "usable_text_ratio": 0.75
+  },
+  "browser_debug": {
+    "headless": true,
+    "proxy": "http://127.0.0.1:7890",
+    "artifact_dir": "python/debug_outputs/youtube_headless",
+    "attempted_video_count": 12,
+    "browser_failures": [],
+    "strategy": "transcript_panel_only",
+    "success_count": 5,
+    "comment_fallback_count": 4,
+    "metadata_only_count": 3
+  }
+}

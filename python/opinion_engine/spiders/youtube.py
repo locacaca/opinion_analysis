@@ -26,14 +26,14 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
 
     def __init__(self) -> None:
         """Initialize retry and pacing settings for YouTube collection."""
-        self._api_max_retries = _get_int_env("YOUTUBE_API_MAX_RETRIES", default=2)
+        self._api_max_retries = _get_int_env("YOUTUBE_API_MAX_RETRIES", default=0)
         self._metadata_max_retries = _get_int_env(
             "YOUTUBE_METADATA_MAX_RETRIES",
-            default=2,
+            default=0,
         )
         self._transcript_max_retries = _get_int_env(
             "YOUTUBE_TRANSCRIPT_MAX_RETRIES",
-            default=3,
+            default=0,
         )
         self._enable_pytube_fallback = _get_bool_env(
             "YOUTUBE_ENABLE_PYTUBE_FALLBACK",
@@ -44,7 +44,13 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
 
     async def fetch(self, request: SpiderRequest) -> list[OpinionRecord]:
         """Fetch transcripts asynchronously from the YouTube transcript API."""
-        video_details, raw_data = await self._collect_video_details_and_transcripts(request)
+        callback = request.extra_params.get("record_callback")
+        deadline_epoch = float(request.extra_params.get("collection_deadline_epoch", 0) or 0)
+        video_details, raw_data = await self._collect_video_details_and_transcripts(
+            request,
+            record_callback=callback if callable(callback) else None,
+            collection_deadline_epoch=deadline_epoch,
+        )
         if not video_details:
             raise RuntimeError(
                 "YouTube search returned zero videos. "
@@ -72,7 +78,11 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
 
     async def debug_collect(self, request: SpiderRequest) -> dict[str, Any]:
         """Return detailed search and transcript debug information for YouTube only."""
-        video_details, raw_data = await self._collect_video_details_and_transcripts(request)
+        video_details, raw_data = await self._collect_video_details_and_transcripts(
+            request,
+            record_callback=None,
+            collection_deadline_epoch=0.0,
+        )
         transcript_map = {
             str(item.get("video_id")): item
             for item in raw_data
@@ -119,9 +129,10 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
                     "video_url": item.get("video_url")
                     or f"https://www.youtube.com/watch?v={item.get('video_id')}",
                     "has_transcript": str(item.get("video_id")) in transcript_map,
-                    "transcript_text": transcript_map.get(str(item.get("video_id")), {}).get(
-                        "content"
-                    ),
+                    "transcript_text": transcript_map.get(
+                        str(item.get("video_id")),
+                        {},
+                    ).get("transcript_text"),
                     "transcript_language": transcript_map.get(
                         str(item.get("video_id")),
                         {},
@@ -151,8 +162,29 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
     async def _collect_video_details_and_transcripts(
         self,
         request: SpiderRequest,
+        *,
+        record_callback: Any,
+        collection_deadline_epoch: float,
     ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
         """Collect YouTube video metadata and transcripts for a request."""
+        youtube_mode = str(request.extra_params.get("youtube_mode", "official_api")).strip().lower()
+        if youtube_mode == "headless_browser":
+            from examples.debug_youtube_search_headless import collect_youtube_headless_records
+
+            result = await collect_youtube_headless_records(
+                keyword=request.keyword,
+                language=str(request.extra_params.get("language", "en")),
+                limit=request.limit,
+                proxy=_get_proxy_url(),
+                headless=True,
+                artifact_dir="python/debug_outputs/youtube_headless",
+                record_callback=record_callback,
+            )
+            return (
+                list(result.get("video_details", [])),
+                list(result.get("transcript_items", [])),
+            )
+
         video_ids = request.extra_params.get("video_ids", [])
         strict_captions_only = bool(request.extra_params.get("strict_captions_only", False))
         if video_ids and not isinstance(video_ids, list):
@@ -182,6 +214,9 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
         raw_data: list[dict[str, Any]] = await asyncio.to_thread(
             self._fetch_transcripts,
             video_details,
+            request.keyword,
+            record_callback,
+            collection_deadline_epoch,
         )
         return video_details, raw_data
 
@@ -404,69 +439,99 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
             enriched.append(enriched_item)
         return enriched
 
-    def _fetch_transcripts(self, video_details: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    def _fetch_transcripts(
+        self,
+        video_details: list[dict[str, Any]],
+        keyword: str,
+        record_callback: Any,
+        collection_deadline_epoch: float,
+    ) -> list[dict[str, Any]]:
         """Execute the blocking transcript fetch calls."""
         collected: list[dict[str, Any]] = []
+        deadline_reached = False
         for item in video_details:
+            if not deadline_reached and collection_deadline_epoch and time.time() >= collection_deadline_epoch:
+                deadline_reached = True
+
+            if deadline_reached:
+                item["transcript_error"] = (
+                    "Collection deadline reached before transcript fetch. "
+                    "Stored as metadata-only."
+                )
             video_id = item["video_id"]
             if self._skip_shorts and _looks_like_short(item):
                 item["transcript_error"] = "Skipped likely short-form video to reduce rate-limit risk."
-                continue
-            try:
-                _sleep_before_transcript_request()
-                transcript_payload = self._fetch_transcript_payload(
-                    video_id=video_id,
-                    requested_language=str(item.get("requested_language", "en")),
-                )
-            except Exception as exc:
-                item["transcript_error"] = str(exc)
-                continue
+            transcript_payload: dict[str, Any] | None = None
+            if not deadline_reached and not (self._skip_shorts and _looks_like_short(item)):
+                try:
+                    _sleep_before_transcript_request()
+                    transcript_payload = self._fetch_transcript_payload(
+                        video_id=video_id,
+                        requested_language=str(item.get("requested_language", "en")),
+                    )
+                except Exception as exc:
+                    item["transcript_error"] = str(exc)
 
-            item["transcript_debug"] = {
-                "selected_language": transcript_payload["selected_language"],
-                "is_generated": transcript_payload["is_generated"],
-                "available_transcript_languages": transcript_payload[
-                    "available_transcript_languages"
-                ],
-                "attempt_count": transcript_payload["attempt_count"],
-            }
-
-            transcript_text = transcript_payload["content"]
-            title = str(item.get("title", "")).strip()
-            description = str(item.get("description", "")).strip()
-            content = (
-                f"{title}\n\n{description}\n\n{transcript_text}".strip()
-                if (title or description) and transcript_text
-                else transcript_text or title or description
-            )
-            if not content:
-                item["transcript_error"] = "Transcript fetched but content was empty."
-                continue
-            collected.append(
-                {
-                    "video_id": video_id,
-                    "video_url": item.get("video_url")
-                    or f"https://www.youtube.com/watch?v={video_id}",
-                    "keyword": item["keyword"],
-                    "author": item.get("channel_title"),
-                    "title": item.get("title"),
-                    "language": transcript_payload["language"],
-                    "segment_count": transcript_payload["segment_count"],
-                    "content": content,
-                    "transcript_text": transcript_text,
-                    "transcript_origin": transcript_payload["origin"],
+            if transcript_payload:
+                item["transcript_debug"] = {
                     "selected_language": transcript_payload["selected_language"],
                     "is_generated": transcript_payload["is_generated"],
                     "available_transcript_languages": transcript_payload[
                         "available_transcript_languages"
                     ],
-                    "description": description,
-                    "publish_date": item.get("publish_date"),
-                    "views": item.get("views"),
-                    "length_seconds": item.get("length_seconds"),
-                    "thumbnail_url": item.get("thumbnail_url"),
+                    "attempt_count": transcript_payload["attempt_count"],
                 }
-            )
+
+            transcript_text = transcript_payload["content"] if transcript_payload else ""
+            title = str(item.get("title", "")).strip()
+            description = str(item.get("description", "")).strip()
+            content = "\n\n".join(
+                part for part in (title, transcript_text, description) if part
+            ).strip()
+            if not content:
+                item["transcript_error"] = item.get("transcript_error") or "Video content was empty."
+                continue
+
+            transcript_record = {
+                "video_id": video_id,
+                "video_url": item.get("video_url")
+                or f"https://www.youtube.com/watch?v={video_id}",
+                "keyword": item.get("keyword") or keyword,
+                "author": item.get("channel_title"),
+                "title": item.get("title"),
+                "language": transcript_payload["language"] if transcript_payload else str(
+                    item.get("requested_language", "en")
+                ),
+                "segment_count": transcript_payload["segment_count"] if transcript_payload else 0,
+                "content": content,
+                "transcript_text": transcript_text,
+                "transcript_origin": transcript_payload["origin"] if transcript_payload else "metadata_only",
+                "selected_language": transcript_payload["selected_language"] if transcript_payload else str(
+                    item.get("requested_language", "en")
+                ),
+                "is_generated": transcript_payload["is_generated"] if transcript_payload else None,
+                "available_transcript_languages": transcript_payload[
+                    "available_transcript_languages"
+                ] if transcript_payload else [],
+                "description": description,
+                "publish_date": item.get("publish_date"),
+                "views": item.get("views"),
+                "length_seconds": item.get("length_seconds"),
+                "thumbnail_url": item.get("thumbnail_url"),
+                "fetch_error": _build_fetch_error(
+                    transcript_error=item.get("transcript_error"),
+                    metadata_warning=item.get("metadata_warning"),
+                ),
+            }
+            collected.append(transcript_record)
+            if callable(record_callback):
+                record_callback(
+                    _build_single_opinion_record_from_youtube_video(
+                        keyword=keyword,
+                        video_item=item,
+                        transcript_item=transcript_record,
+                    )
+                )
         return collected
 
     def _fetch_transcript_payload(
@@ -543,7 +608,6 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
                 last_error = exc
                 if attempt > max_retries or not _is_retryable_error(exc):
                     raise
-                _sleep_after_retryable_failure(exc, attempt=attempt, stage=stage)
         raise RuntimeError(f"Failed to fetch JSON from {url}: {last_error}")
 
     def _call_with_retries(
@@ -562,7 +626,6 @@ class YouTubeTranscriptSpider(BaseSpider[dict[str, Any]]):
                 last_error = exc
                 if attempt > max_retries or not _is_retryable_error(exc):
                     raise
-                _sleep_after_retryable_failure(exc, attempt=attempt, stage="blocking")
         raise RuntimeError(f"blocking request failed: {last_error}")
 
 
@@ -639,12 +702,17 @@ def _build_single_opinion_record_from_youtube_video(
     title = str(video_item.get("title") or "").strip()
     description = str(video_item.get("description") or "").strip()
     transcript_text = (
-        str(transcript_item.get("transcript_text") or transcript_item.get("content") or "").strip()
+        str(transcript_item.get("transcript_text") or "").strip()
+        if transcript_item
+        else ""
+    )
+    comments_text = (
+        str(transcript_item.get("comments_text") or "").strip()
         if transcript_item
         else ""
     )
     content = "\n\n".join(
-        part for part in (title, transcript_text, description) if part
+        part for part in (title, transcript_text, comments_text, description) if part
     ).strip()
     if not content:
         content = title or description or video_id or "youtube_video"
@@ -657,6 +725,9 @@ def _build_single_opinion_record_from_youtube_video(
     available_languages = (
         transcript_item.get("available_transcript_languages") if transcript_item else None
     )
+    transcript_status = transcript_item.get("transcript_status") if transcript_item else None
+    analysis_text_source = transcript_item.get("analysis_text_source") if transcript_item else None
+    comments_count = transcript_item.get("comments_count") if transcript_item else None
 
     return {
         "source": "youtube",
@@ -673,9 +744,14 @@ def _build_single_opinion_record_from_youtube_video(
             "title": video_item.get("title"),
             "description_text": video_item.get("description"),
             "transcript_text": transcript_text or None,
-            "description": video_item.get("description"),
+            "comments_text": comments_text or None,
+            "fetch_error": _build_fetch_error(
+                transcript_error=video_item.get("transcript_error"),
+                metadata_warning=video_item.get("metadata_warning"),
+            ),
             "language": transcript_language,
             "segment_count": transcript_segment_count,
+            "comments_count": comments_count,
             "views": video_item.get("views"),
             "length_seconds": video_item.get("length_seconds"),
             "thumbnail_url": video_item.get("thumbnail_url"),
@@ -684,6 +760,8 @@ def _build_single_opinion_record_from_youtube_video(
             "selected_language": selected_language,
             "is_generated": is_generated,
             "available_transcript_languages": available_languages,
+            "transcript_status": transcript_status,
+            "analysis_text_source": analysis_text_source,
             "transcript_missing": not bool(transcript_text),
         },
     }
@@ -709,6 +787,20 @@ def _extract_thumbnail_url(thumbnails: Any) -> str:
             if url:
                 return url
     return ""
+
+
+def _build_fetch_error(
+    *,
+    transcript_error: Any,
+    metadata_warning: Any,
+) -> str | None:
+    """Build a compact per-record fetch error string or None."""
+    parts: list[str] = []
+    for value in (transcript_error, metadata_warning):
+        text = str(value).strip() if value is not None else ""
+        if text and text not in parts:
+            parts.append(text)
+    return " | ".join(parts) if parts else None
 
 
 def _parse_view_count(value: Any) -> int | None:
@@ -848,16 +940,3 @@ def _is_retryable_error(exc: Exception) -> bool:
 def _sleep_before_transcript_request() -> None:
     """Add a short random pause only before transcript requests."""
     time.sleep(random.uniform(0.8, 1.8))
-
-
-def _sleep_after_retryable_failure(exc: Exception, *, attempt: int, stage: str) -> None:
-    """Sleep briefly after retryable failures, with a larger pause for 429s."""
-    message = str(exc).casefold()
-    if "429" in message or "too many requests" in message:
-        base_delay = min(12.0, 2.5 * attempt)
-    elif "403" in message or "forbidden" in message:
-        base_delay = min(6.0, 1.5 * attempt)
-    else:
-        base_delay = min(4.0, 0.8 * attempt)
-    jitter = random.uniform(0.2, 0.9)
-    time.sleep(base_delay + jitter)

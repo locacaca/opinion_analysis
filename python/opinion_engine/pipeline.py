@@ -3,27 +3,40 @@
 from __future__ import annotations
 
 import asyncio
+import copy
 from datetime import datetime, timedelta, timezone
 import time
+from typing import Callable
 from typing import Any, Iterable
 
 from .analysis import OpinionAnalyzer
 from .cleaning import clean_opinion_records
 from .config import get_optional_env, load_env_file
 from .models import OpinionRecord, SpiderRequest
-from .spiders import BaseSpider, RedditSpider, XSearchSpider, YouTubeTranscriptSpider
+from .spiders import BaseSpider, RedditSearchSpider, XSearchSpider, YouTubeTranscriptSpider
 from .storage import OpinionStorage, StoredOpinionRecord
 
 
 async def analyze_keyword(
     keyword: str,
     *,
-    limit_per_source: int = 15,
+    limit_per_source: int = 30,
+    total_limit: int | None = None,
     sources: list[str] | None = None,
+    source_weights: dict[str, str] | None = None,
     language: str = "en",
+    output_language: str = "en",
+    youtube_mode: str = "official_api",
+    progress_callback: Callable[[dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     """Collect multi-source records for a keyword and return dashboard-ready JSON."""
-    monitor = _create_monitor(keyword=keyword, language=language, mode="analyze")
+    monitor = _create_monitor(
+        keyword=keyword,
+        language=language,
+        mode="analyze",
+        progress_callback=progress_callback,
+    )
+    _append_monitor_stage(monitor, "request_received", keyword=keyword)
     storage = OpinionStorage()
     await asyncio.to_thread(storage.initialize)
     _append_monitor_stage(monitor, "storage_initialized")
@@ -34,20 +47,43 @@ async def analyze_keyword(
 
     try:
         normalized_sources = _normalize_sources(sources)
+        normalized_youtube_mode = _normalize_youtube_mode(youtube_mode)
         _append_monitor_stage(monitor, "sources_selected", sources=normalized_sources)
-        spiders = _build_spiders(normalized_sources)
-
-        request = SpiderRequest(
-            keyword=keyword,
-            limit=limit_per_source,
-            extra_params=_build_recent_window_params(
-                language=language,
-                recent_only=True,
-                strict_captions_only=False,
-            ),
+        source_limits = _resolve_source_limits(
+            sources=normalized_sources,
+            total_limit=total_limit,
+            fallback_limit_per_source=limit_per_source,
+            source_weights=source_weights or {},
         )
+        _append_monitor_stage(monitor, "source_limits_resolved", source_limits=source_limits)
+        spiders = _build_spiders(normalized_sources)
+        _append_monitor_stage(
+            monitor,
+            "collector_plan_ready",
+            source_count=len(spiders),
+            youtube_mode=normalized_youtube_mode if "youtube" in normalized_sources else None,
+        )
+
         batches = await asyncio.gather(
-            *[_collect_from_spider(spider, request) for spider in spiders]
+            *[
+                _collect_from_spider(
+                    spider,
+                    SpiderRequest(
+                        keyword=keyword,
+                        limit=source_limits.get(spider.source_name, 0),
+                        extra_params={
+                            **_build_recent_window_params(
+                                language=language,
+                                recent_only=True,
+                                strict_captions_only=False,
+                            ),
+                            "youtube_mode": normalized_youtube_mode,
+                        },
+                    ),
+                )
+                for spider in spiders
+                if source_limits.get(spider.source_name, 0) > 0
+            ]
         )
         _append_monitor_stage(monitor, "collection_completed")
 
@@ -58,6 +94,7 @@ async def analyze_keyword(
             raw_count_by_source[source_name] = len(records)
             if error:
                 source_errors[source_name] = error
+
         _append_monitor_stage(
             monitor,
             "records_collected",
@@ -73,6 +110,8 @@ async def analyze_keyword(
             "records_cleaned",
             retained_record_count=len(clean_result.records),
             discarded_record_count=discarded_count,
+            retained_count_by_source=clean_result.retained_count_by_source,
+            discarded_count_by_source=clean_result.discarded_count_by_source,
         )
 
         stored_count = await asyncio.to_thread(
@@ -89,14 +128,25 @@ async def analyze_keyword(
         )
 
         analyzer = OpinionAnalyzer()
+        llm_model = str(
+            getattr(
+                getattr(getattr(analyzer, "_client", None), "_config", None),
+                "model",
+                "unknown",
+            )
+            or "unknown"
+        )
         _append_monitor_stage(
             monitor,
             "llm_analysis_started",
             llm_record_count=len(stored_records),
+            llm_mode="single_pass_round_analysis",
+            llm_model=llm_model,
         )
         analysis_result = await analyzer.analyze_records(
             keyword=keyword,
             records=stored_records,
+            output_language=_normalize_language(output_language),
         )
         _append_monitor_stage(
             monitor,
@@ -108,12 +158,28 @@ async def analyze_keyword(
 
         posts = [_to_post_payload(record) for record in stored_records]
         controversy_points = analysis_result["controversy_points"]
-        for index, point in enumerate(controversy_points):
-            if "link" not in point and index < len(posts):
-                point["link"] = posts[index]["original_link"]
 
-        heat_score = _compute_heat_score(stored_records)
+        _append_monitor_stage(
+            monitor,
+            "score_computation_started",
+            stored_record_count=len(stored_records),
+        )
+        heat_score = _compute_heat_score(
+            records=stored_records,
+            record_sentiments=analysis_result.get("record_sentiments", []),
+        )
         source_breakdown = _build_source_breakdown(stored_records)
+        _append_monitor_stage(
+            monitor,
+            "score_computation_completed",
+            heat_score=heat_score,
+            source_breakdown=source_breakdown,
+        )
+        _append_monitor_stage(
+            monitor,
+            "run_finalization_started",
+            run_id=run_id,
+        )
         await asyncio.to_thread(
             storage.complete_run,
             run_id=run_id,
@@ -138,7 +204,15 @@ async def analyze_keyword(
             "run_id": run_id,
             "keyword": keyword,
             "language": language,
+            "output_language": _normalize_language(output_language),
             "selected_sources": normalized_sources,
+            "youtube_mode": normalized_youtube_mode,
+            "llm_model": llm_model,
+            "requested_total_limit": sum(source_limits.values()),
+            "source_limits": source_limits,
+            "raw_count_by_source": raw_count_by_source,
+            "retained_count_by_source": clean_result.retained_count_by_source,
+            "discarded_count_by_source": clean_result.discarded_count_by_source,
             "sentiment_score": analysis_result["sentiment_score"],
             "heat_score": heat_score,
             "summary": analysis_result["summary"],
@@ -175,16 +249,23 @@ async def collect_and_store_keyword(
     *,
     language: str = "en",
     limit_per_source: int = 50,
+    total_limit: int | None = None,
     sources: list[str] | None = None,
+    source_weights: dict[str, str] | None = None,
+    youtube_mode: str = "official_api",
+    progress_callback: Callable[[dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     """Collect source data, clean it, and store it without calling the LLM."""
     normalized_language = _normalize_language(language)
     normalized_sources = _normalize_sources(sources)
+    normalized_youtube_mode = _normalize_youtube_mode(youtube_mode)
     monitor = _create_monitor(
         keyword=keyword,
         language=normalized_language,
         mode="collect_only",
+        progress_callback=progress_callback,
     )
+    _append_monitor_stage(monitor, "request_received", keyword=keyword)
 
     storage = OpinionStorage()
     await asyncio.to_thread(storage.initialize)
@@ -197,17 +278,31 @@ async def collect_and_store_keyword(
     try:
         spiders = _build_spiders(normalized_sources)
         _append_monitor_stage(monitor, "sources_selected", sources=normalized_sources)
-        request = SpiderRequest(
-            keyword=keyword,
-            limit=limit_per_source,
-            extra_params=_build_recent_window_params(
-                language=normalized_language,
-                recent_only=False,
-                strict_captions_only=False,
-            ),
+        source_limits = _resolve_source_limits(
+            sources=normalized_sources,
+            total_limit=total_limit,
+            fallback_limit_per_source=limit_per_source,
+            source_weights=source_weights or {},
         )
+        _append_monitor_stage(monitor, "source_limits_resolved", source_limits=source_limits)
         batches = await asyncio.gather(
-            *[_collect_from_spider(spider, request) for spider in spiders]
+            *[
+                _collect_from_spider(
+                    spider,
+                    SpiderRequest(
+                        keyword=keyword,
+                        limit=source_limits.get(spider.source_name, 0),
+                        extra_params=_build_recent_window_params(
+                            language=normalized_language,
+                            recent_only=False,
+                            strict_captions_only=False,
+                        )
+                        | {"youtube_mode": normalized_youtube_mode},
+                    ),
+                )
+                for spider in spiders
+                if source_limits.get(spider.source_name, 0) > 0
+            ]
         )
         _append_monitor_stage(monitor, "collection_completed")
 
@@ -233,6 +328,8 @@ async def collect_and_store_keyword(
             "records_cleaned",
             retained_record_count=len(clean_result.records),
             discarded_record_count=discarded_count,
+            retained_count_by_source=clean_result.retained_count_by_source,
+            discarded_count_by_source=clean_result.discarded_count_by_source,
         )
 
         stored_count = await asyncio.to_thread(
@@ -265,10 +362,15 @@ async def collect_and_store_keyword(
             "keyword": keyword,
             "language": normalized_language,
             "selected_sources": normalized_sources,
+            "youtube_mode": normalized_youtube_mode,
+            "requested_total_limit": sum(source_limits.values()),
+            "source_limits": source_limits,
             "raw_record_count": len(raw_records),
             "stored_record_count": stored_count,
             "discarded_record_count": discarded_count,
             "raw_count_by_source": raw_count_by_source,
+            "retained_count_by_source": clean_result.retained_count_by_source,
+            "discarded_count_by_source": clean_result.discarded_count_by_source,
             "stored_count_by_source": source_breakdown,
             "source_errors": source_errors,
             "records": [_to_post_payload(record) for record in stored_records],
@@ -304,17 +406,27 @@ async def _collect_from_spider(
         return spider.source_name, [], str(exc)
 
 
-def _compute_heat_score(records: Iterable[OpinionRecord | StoredOpinionRecord]) -> int:
-    """Compute a heat score from record volume, source diversity, and interaction signals."""
-    items = list(records)
-    volume_score = min(len(items) * 10, 60)
-    diversity_score = min(
-        len({_get_record_source(item) for item in items}) * 10,
-        20,
-    )
-    interaction_total = sum(_get_record_interaction_count(item) for item in items)
-    interaction_score = min(_log_scaled(interaction_total) * 4, 20)
-    return max(0, min(100, round(volume_score + diversity_score + interaction_score)))
+def _compute_heat_score(
+    *,
+    records: Sequence[OpinionRecord | StoredOpinionRecord],
+    record_sentiments: Sequence[dict[str, Any]],
+) -> int:
+    """Compute heat from relevance and recency."""
+    if not records:
+        return 0
+
+    relevance_by_link = {
+        str(item.get("original_link", "")): _safe_int(item.get("relevance_score"))
+        for item in record_sentiments
+    }
+    total_score = 0.0
+    for record in records:
+        link = _get_record_link(record)
+        relevance = relevance_by_link.get(link, 50)
+        recency_weight = _compute_recency_weight(_get_record_publish_date(record))
+        total_score += (relevance / 100.0) * recency_weight
+
+    return max(0, min(100, round(total_score * 10)))
 
 
 def _build_source_breakdown(
@@ -440,6 +552,78 @@ def _normalize_sources(sources: list[str] | None) -> list[str]:
     return normalized
 
 
+def _resolve_source_limits(
+    *,
+    sources: list[str],
+    total_limit: int | None,
+    fallback_limit_per_source: int,
+    source_weights: dict[str, str],
+) -> dict[str, int]:
+    """Allocate a total crawl budget across selected sources by weight."""
+    if not sources:
+        return {}
+
+    if total_limit is None:
+        per_source = max(1, min(fallback_limit_per_source, 50))
+        return {source: per_source for source in sources}
+
+    normalized_total = max(len(sources), min(total_limit, 50))
+    weight_values = {
+        source: _normalize_source_weight_value(source_weights.get(source))
+        for source in sources
+    }
+    total_weight = sum(weight_values.values())
+    if total_weight <= 0:
+        equal_share = normalized_total // len(sources)
+        remainder = normalized_total % len(sources)
+        return {
+            source: equal_share + (1 if index < remainder else 0)
+            for index, source in enumerate(sources)
+        }
+
+    base_allocations: dict[str, int] = {}
+    remainders: list[tuple[str, float]] = []
+    assigned = 0
+    for source in sources:
+        raw_share = normalized_total * weight_values[source] / total_weight
+        base_share = int(raw_share)
+        base_allocations[source] = base_share
+        assigned += base_share
+        remainders.append((source, raw_share - base_share))
+
+    missing = normalized_total - assigned
+    for source, _ in sorted(
+        remainders,
+        key=lambda item: (-item[1], -weight_values[item[0]], sources.index(item[0])),
+    ):
+        if missing <= 0:
+            break
+        base_allocations[source] += 1
+        missing -= 1
+
+    for source in sources:
+        if base_allocations[source] <= 0:
+            donor = max(
+                sources,
+                key=lambda item: (base_allocations[item], weight_values[item]),
+            )
+            if donor != source and base_allocations[donor] > 1:
+                base_allocations[donor] -= 1
+                base_allocations[source] += 1
+
+    return base_allocations
+
+
+def _normalize_source_weight_value(value: str | None) -> int:
+    """Map frontend weight labels into integer allocation weights."""
+    lowered = (value or "").strip().lower()
+    if lowered == "low":
+        return 1
+    if lowered == "high":
+        return 3
+    return 2
+
+
 def _normalize_language(language: str) -> str:
     """Normalize supported language codes for collection debugging."""
     lowered = language.strip().lower()
@@ -448,12 +632,42 @@ def _normalize_language(language: str) -> str:
     return lowered
 
 
+def _normalize_youtube_mode(value: str) -> str:
+    """Normalize supported YouTube collection modes."""
+    lowered = value.strip().lower()
+    if lowered in {"official_api", "api"}:
+        return "official_api"
+    if lowered in {"headless_browser", "browser", "headless"}:
+        return "headless_browser"
+    raise ValueError("youtube_mode must be either 'official_api' or 'headless_browser'.")
+
+
+def _safe_collection_deadline_seconds(value: str | None, *, default: int) -> int:
+    """Parse a bounded collection deadline."""
+    if value is None:
+        return default
+    try:
+        parsed = int(value)
+    except ValueError:
+        return default
+    return max(15, min(parsed, 300))
+
+
 def _build_spiders(sources: list[str]) -> list[BaseSpider[Any]]:
     """Instantiate spiders only for the selected sources."""
+    load_env_file()
     spiders: list[BaseSpider[Any]] = []
     for source in sources:
         if source == "reddit":
-            spiders.append(RedditSpider())
+            spiders.append(
+                RedditSearchSpider(
+                    proxy=get_optional_env("REDDIT_PROXY")
+                    or get_optional_env("HTTPS_PROXY")
+                    or get_optional_env("HTTP_PROXY"),
+                    headless=_get_bool_env("REDDIT_HEADLESS", default=True),
+                    slow_mode=_get_bool_env("REDDIT_SLOW_MODE", default=True),
+                )
+            )
         elif source == "youtube":
             spiders.append(YouTubeTranscriptSpider())
         elif source == "x":
@@ -461,10 +675,29 @@ def _build_spiders(sources: list[str]) -> list[BaseSpider[Any]]:
     return spiders
 
 
-def _create_monitor(*, keyword: str, language: str, mode: str) -> dict[str, Any]:
+def _get_bool_env(name: str, *, default: bool) -> bool:
+    """Read a boolean environment variable with a conservative fallback."""
+    value = get_optional_env(name)
+    if value is None:
+        return default
+    lowered = value.strip().lower()
+    if lowered in {"1", "true", "yes", "on"}:
+        return True
+    if lowered in {"0", "false", "no", "off"}:
+        return False
+    return default
+
+
+def _create_monitor(
+    *,
+    keyword: str,
+    language: str,
+    mode: str,
+    progress_callback: Callable[[dict[str, Any]], None] | None = None,
+) -> dict[str, Any]:
     """Create a backend monitor payload for one pipeline run."""
     started_at = datetime.now(timezone.utc)
-    return {
+    monitor = {
         "mode": mode,
         "keyword": keyword,
         "language": language,
@@ -472,8 +705,11 @@ def _create_monitor(*, keyword: str, language: str, mode: str) -> dict[str, Any]
         "started_at": started_at.isoformat(),
         "duration_ms": 0,
         "_started_perf": time.perf_counter(),
+        "_progress_callback": progress_callback,
         "stages": [],
     }
+    _emit_monitor_progress(monitor)
+    return monitor
 
 
 def _append_monitor_stage(
@@ -482,8 +718,13 @@ def _append_monitor_stage(
     **details: Any,
 ) -> None:
     """Append one timestamped monitor stage."""
-    print(f"[TrendPulse][{monitor.get('mode', 'pipeline')}] {stage}: {details}")
     stages = monitor.setdefault("stages", [])
+    stage_index = len(stages) + 1 if isinstance(stages, list) else 1
+    stage_text = _describe_monitor_stage(stage=stage, details=details)
+    print(
+        f"[TrendPulse][{monitor.get('mode', 'pipeline')}][{stage_index:02d}] "
+        f"{stage} | {stage_text} | details={details}"
+    )
     if isinstance(stages, list):
         stages.append(
             {
@@ -492,14 +733,126 @@ def _append_monitor_stage(
                 "details": details,
             }
         )
+    _emit_monitor_progress(monitor)
 
 
 def _finalize_monitor(monitor: dict[str, Any], *, status: str) -> None:
     """Finalize monitor timing fields before returning the response."""
-    started_perf = monitor.pop("_started_perf", None)
+    started_perf = monitor.get("_started_perf")
     duration_ms = 0
     if isinstance(started_perf, (int, float)):
         duration_ms = round((time.perf_counter() - float(started_perf)) * 1000)
     monitor["status"] = status
     monitor["duration_ms"] = duration_ms
     monitor["finished_at"] = datetime.now(timezone.utc).isoformat()
+    _emit_monitor_progress(monitor)
+    monitor.pop("_started_perf", None)
+    monitor.pop("_progress_callback", None)
+
+
+def _emit_monitor_progress(monitor: dict[str, Any]) -> None:
+    """Push a sanitized monitor snapshot to an optional progress callback."""
+    callback = monitor.get("_progress_callback")
+    if not callable(callback):
+        return
+    callback(_public_monitor_snapshot(monitor))
+
+
+def _public_monitor_snapshot(monitor: dict[str, Any]) -> dict[str, Any]:
+    """Return a serialization-safe monitor payload."""
+    return {
+        key: copy.deepcopy(value)
+        for key, value in monitor.items()
+        if not str(key).startswith("_")
+    }
+
+
+def _describe_monitor_stage(*, stage: str, details: dict[str, Any]) -> str:
+    """Return a concise human-readable description for console progress output."""
+    source = str(details.get("source", "") or "").strip()
+    if stage == "request_received":
+        return "received analysis request"
+    if stage == "storage_initialized":
+        return "local database ready"
+    if stage == "run_created":
+        return f"created collection run #{details.get('run_id')}"
+    if stage == "sources_selected":
+        return f"selected sources: {details.get('sources')}"
+    if stage == "source_limits_resolved":
+        return "resolved crawl limit per source"
+    if stage == "collector_plan_ready":
+        return "collector plan prepared"
+    if stage == "source_collection_started":
+        return f"starting collection for {source}"
+    if stage == "collection_completed":
+        return "all selected sources finished collection"
+    if stage == "records_collected":
+        return "all source records collected"
+    if stage == "records_cleaned":
+        return "basic record cleaning finished"
+    if stage == "records_stored":
+        return "cleaned records stored and loaded from database"
+    if stage == "llm_analysis_started":
+        return "sending collected records to the model"
+    if stage == "llm_analysis_completed":
+        return "model returned sentiment and controversy analysis"
+    if stage == "score_computation_started":
+        return "computing heat and dashboard metrics"
+    if stage == "score_computation_completed":
+        return "heat and source breakdown ready"
+    if stage == "run_finalization_started":
+        return "writing final summary back into database"
+    if stage == "response_ready":
+        return "dashboard payload ready for frontend"
+    if stage == "failed":
+        return "pipeline failed"
+    return stage.replace("_", " ")
+
+
+def _get_record_link(record: OpinionRecord | StoredOpinionRecord) -> str:
+    """Return the record link from either transient or stored records."""
+    if isinstance(record, StoredOpinionRecord):
+        return record.original_link
+    return str(record.get("original_link", ""))
+
+
+def _get_record_publish_date(record: OpinionRecord | StoredOpinionRecord) -> str:
+    """Return the publish date from either transient or stored records."""
+    metadata: dict[str, Any]
+    if isinstance(record, StoredOpinionRecord):
+        metadata = dict(record.metadata or {})
+    else:
+        metadata = dict(record.get("metadata", {}) or {})
+    return str(metadata.get("publish_date", "") or "")
+
+
+def _compute_recency_weight(publish_date: str) -> float:
+    """Compute a recency weight where newer records contribute more heat."""
+    parsed = _parse_publish_date(publish_date)
+    if parsed is None:
+        return 0.4
+    age = datetime.now(timezone.utc) - parsed
+    age_days = max(0.0, age.total_seconds() / 86400.0)
+    if age_days <= 1:
+        return 1.0
+    if age_days <= 3:
+        return 0.85
+    if age_days <= 7:
+        return 0.7
+    if age_days <= 30:
+        return 0.45
+    return 0.2
+
+
+def _parse_publish_date(value: str) -> datetime | None:
+    """Parse an ISO-like publish date string into a UTC datetime."""
+    normalized = value.strip()
+    if not normalized:
+        return None
+    try:
+        parsed = datetime.fromisoformat(normalized.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)

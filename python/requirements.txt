@@ -5,5 +5,8 @@ psycopg[binary]>=3.1,<4.0
 pytube>=15.0,<16.0
 requests>=2.31,<3.0
 sqlalchemy>=2.0,<3.0
+snscrape>=0.7,<1.0
 uvicorn>=0.30,<1.0
 youtube-transcript-api==1.1.0
+playwright>=1.40,<2.0
+playwright-stealth>=1.0,<2.0
